@@ -18,7 +18,7 @@ GET 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 [REST API](https://api.github.com/repos/{owner}/{repo}/commits "Commit list 가져오는 REST API")
 
-##### 실제 요청
+#### 실제 요청
 
 ##### URL
 
@@ -34,7 +34,7 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
 }
 ```
 
-##### 실제 요청 설명
+#### 실제 요청 설명
 
 ##### URL
 
@@ -52,9 +52,7 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
 }
 ```
 
-### 예상 응답
-
-##### 실제 응답
+#### 실제 응답
 
 ``` json
 [
@@ -213,7 +211,7 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
 ]
 ```
 
-##### 실제 응답 설명
+#### 실제 응답 설명
 
 ``` json
 [
@@ -386,7 +384,7 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 [REST API](https://api.github.com/markdown "Github REST API 주소")
 
-##### 실제 요청
+#### 실제 요청
 
 ###### Header
 
@@ -404,7 +402,7 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 }
 ```
 
-##### 실제 요청 설명
+#### 실제 요청 설명
 
 ###### Header
 
@@ -424,11 +422,9 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 }
 ```
 
-### 예상 응답
+#### 실제 응답
 
-##### 실제 응답
-
-###### Body
+##### Body
 
 ``` html
 <h1>
@@ -437,7 +433,7 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 <p>this function is <strong>amazing!</strong></p>
 ```
 
-##### 실제 응답 설명
+#### 실제 응답 설명
 
 ``` html
 <!-- MarkDown 형식의 구조가 HTML 형식으로 변환되었다. -->
@@ -457,9 +453,9 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 [REST API](https://api.github.com/markdown "Github REST API 주소")
 
-##### 실제 요청
+#### 실제 요청
 
-###### Header
+##### Header
 
 ``` json
 {
@@ -467,7 +463,7 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 }
 ```
 
-###### Body
+##### Body
 
 ``` json
 {
@@ -475,9 +471,9 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 }
 ```
 
-##### 실제 요청 설명
+#### 실제 요청 설명
 
-###### Header
+##### Header
 
 ``` json
 {
@@ -486,7 +482,7 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 }
 ```
 
-###### Body
+##### Body
 
 ``` json
 {
@@ -495,11 +491,11 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 }
 ```
 
-### 예상 응답
+#### 예상 응답
 
-##### 실제 응답
+#### 실제 응답
 
-###### Body
+##### Body
 
 ``` html
 <h1>
@@ -508,7 +504,7 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 <p>this function is <strong>amazing!</strong></p>
 ```
 
-##### 실제 응답 설명
+#### 실제 응답 설명
 
 ``` html
 <!-- MarkDown 형식의 구조가 HTML 형식으로 변환되었다. -->
@@ -528,17 +524,13 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 Github REST API에 대한 간략한 설명
 
-### 사용 방법
+#### 사용 방법
 
 사용 방법으로 설명해야 할 부분을 기입. 해당 메소드는 POST 형식이며 무엇을 주의해야 한다 등.
 
 [주소](https://api.github.com/somethine_else "Github REST API 주소")
 
-#### 요청 방법
-
-<em>소스코드에서 사용할 실제 코드와 코드에 대한 주석이 포함되어 있는 설명 코드 2개가 중복되어야 한다.</em>
-
-##### 실제 요청
+#### 실제 요청
 
 ``` json
 {
@@ -547,7 +539,7 @@ Github REST API에 대한 간략한 설명
 }
 ```
 
-##### 실제 요청 설명
+#### 실제 요청 설명
 
 ``` json
 {
@@ -560,11 +552,7 @@ Github REST API에 대한 간략한 설명
 
 위와 같이 코드가 있는 경우 코드의 아랫 부분에 설명을 기입. 예를 들어 json 형식으로 요청을 하며, key, value 형식이다.
 
-### 예상 응답
-
-<em>소스코드에서 사용할 실제 코드와 코드에 대한 주석이 포함되어 있는 설명 코드 2개가 중복되어야 한다.</em>
-
-##### 실제 응답
+#### 실제 응답
 
 ``` json
 {
@@ -573,7 +561,7 @@ Github REST API에 대한 간략한 설명
 }
 ```
 
-##### 실제 응답 설명
+#### 실제 응답 설명
 
 ``` json
 {
