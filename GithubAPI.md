@@ -117,6 +117,8 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
         "type": "User",
         "site_admin": false
     },
+    // 커밋 정보를 가져오는 REST API
+    // sha 정보는 예제에서 사용된 값과 다르지만 동일한 커밋 정보를 가져오므로, 확인이 필요함.
     "parents": [
         {
             "sha": "2a91c220f2bd62f717c18676d13e9dfbc9709a48",
@@ -124,22 +126,38 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
             "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/2a91c220f2bd62f717c18676d13e9dfbc9709a48"
         }
     ],
+    // 커밋 통계
     "stats": {
         "total": 4,
+        // 추가된 코드: 2줄
         "additions": 2,
+        // 삭제된 코드: 2줄
         "deletions": 2
     },
+    // 편집된 파일에 대한 정보
     "files": [
         {
+            // 파일의 하쉬값
             "sha": "8637d71910b6a08e06645e5a80f20ef3e97f3e3b",
+            // 파일명
             "filename": "JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            // 파일 상태
             "status": "modified",
+            // 추가된 코드: 2줄
             "additions": 2,
+            // 삭제된 코드: 2줄
             "deletions": 2,
             "changes": 4,
+            // 변경된 파일 내용 보기
             "blob_url": "https://github.com/Team-Yamu/JavaWeb/blob/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            // 변경된 파일 내용 raw 보기(CSS 없이)
             "raw_url": "https://github.com/Team-Yamu/JavaWeb/raw/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            // 파일에 다한 Github REST API 주소
             "contents_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/contents/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java?ref=ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+            // 파일 변경 내역
+            // 전 문장의 개헹 문자 '\n' 다음에 - 혹은 + 기호를 기반으로 다음에 나올 줄이 삭제된 줄인지, 추가된 줄인지를 구분
+            // 예: 문자열1\n+문자열2\n-문자열3
+            문자열2는 추가된 줄이고, 문자열 3은 삭제된 줄임
             "patch": "@@ -32,8 +32,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res\n             {\n                 ConsoleCommand cmd = new ConsoleCommand();\n \n-                // EC2 Container 에서의 main.py 위치는 다음과 같음.\n-                String command = cmd.inputCommand(\"python /bin/bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n+                // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py\n+                String command = cmd.inputCommand(\"python ./bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n                 //String command = cmd.inputCommand(\" cd D:\\\\GitHubRepo\\\\YAMU2020\\\\JavaWeb\\\\Python Features\\\\nltk && d: && python main.py \" + wordBean.getWordName()) +\" -all\";\n                 String result = cmd.execCommand(command);\n                 wordBean.setJsonData(result);"
         }
     ]
@@ -150,25 +168,33 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
 
 ``` json
 {
+    // 커밋을 구분 짓기 위한 해쉬값
     "sha": "ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
     "node_id": "MDY6Q29tbWl0MjY4MjE2MzI2OmFjNzM0M2M2YTNhNjE5MGQyZjkxNzFiOGQ2YTJlMzRkMmM3NWM0ZTA=",
     "commit": {
+        // author, committer 차이는 계정의 주인과 해당 컨텐츠를 작성한 주체적인 것(사림이거나 컴퓨터가 될 수 있음)을 의미한다.
+        // 커밋을 작성한 사람의 정보
         "author": {
             "name": "seungupnoh",
             "email": "soungho70_@naver.com",
             "date": "2020-06-17T02:32:19Z"
         },
+        // 커밋을 작성한 사람 혹은 기계의 정보
+        // 예: 깃허브 홈페이지에서 .md 파일이나 코드를 수정한 경우 committer는 Github가 된다.
         "committer": {
             "name": "seungupnoh",
             "email": "soungho70_@naver.com",
             "date": "2020-06-17T02:32:19Z"
         },
+        // 커밋 작성시 기입한 로그
         "message": "up EC2 Docker Container와 연결되지 않는 소스코드들.\n\n도커 컨테이너와 연결시에 제대로 실행이 이루어지지 않을 수 있는 부분들입니다.",
         "tree": {
             "sha": "dbd77cdd1e315b0f61a9cd9ba3f39530c69cdd72",
             "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/git/trees/dbd77cdd1e315b0f61a9cd9ba3f39530c69cdd72"
         },
+        // API 호출 시 사용한 URL
         "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/git/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+        // 커밋에 대한 댓글 수
         "comment_count": 1,
         "verification": {
             "verified": false,
@@ -177,17 +203,26 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
             "payload": null
         }
     },
+    // API 호출 시 사용한 URL
     "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    // Github 홈페이지 내 해당 커밋에 대한 정보를 보여주는 페이지의 URL
     "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    // 커밋에 대한 댓글의 정보를 가져오는 REST API 주소
     "comments_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/comments",
+    // 댓글 작성자의 정보
+    // 아래 예제에서 author, committer 정보는 동일함
     "author": {
         "login": "Seungup",
         "id": 53374248,
         "node_id": "MDQ6VXNlcjUzMzc0MjQ4",
+        // 아바타 이미지 URL
         "avatar_url": "https://avatars3.githubusercontent.com/u/53374248?v=4",
         "gravatar_id": "",
+        // 유저에 대한 정보를 가져오는 API
         "url": "https://api.github.com/users/Seungup",
+        // 유저 프로필 페이지 URL
         "html_url": "https://github.com/Seungup",
+        // 유저를 팔로잉하는 사람의 정보를 가져오는 REST API 주소
         "followers_url": "https://api.github.com/users/Seungup/followers",
         "following_url": "https://api.github.com/users/Seungup/following{/other_user}",
         "gists_url": "https://api.github.com/users/Seungup/gists{/gist_id}",
