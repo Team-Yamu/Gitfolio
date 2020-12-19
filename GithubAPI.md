@@ -494,24 +494,31 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
 ``` json
 [
     {
+        // 커밋에 대한 해쉬값
         "sha": "6640c583ccb9664c814af9d04fba529f780bc8f7",
         "node_id": "MDY6Q29tbWl0MzIyMzMxNDI0OjY2NDBjNTgzY2NiOTY2NGM4MTRhZjlkMDRmYmE1MjlmNzgwYmM4Zjc=",
+        // 커밋에 대한 정보
         "commit": {
+            // 계정의 주인
             "author": {
                 "name": "leo",
                 "email": "algo2000@naver.com",
                 "date": "2020-12-17T15:31:48Z"
             },
+            // 실제 커밋을 수행한 주체(예: Github 웹 사이트를 통해서 파일을 변경 후 커밋 한 경우 committer는 github가 될 수 있다.)
             "committer": {
                 "name": "leo",
                 "email": "algo2000@naver.com",
                 "date": "2020-12-17T15:31:48Z"
             },
+            // 커밋할 때 입력한 메세지
             "message": "[INIT] readme.md 파일 작성\n\n - CommitRoles.md 작성\n - GithubAPI.md 추가\n - README.md 각 md 파일 링크 추가\n\n [modified] README.md\n [new file] CommitRoles.md, GithubAPI.md",
+            // 어떤 역할인지 모르며, 추가 탐색이 필요
             "tree": {
                 "sha": "ca67de37ec9720eebc9ada46a15363f9b80d75b6",
                 "url": "https://api.github.com/repos/Team-Yamu/Gitfolio/git/trees/ca67de37ec9720eebc9ada46a15363f9b80d75b6"
             },
+            // 해당 커밋에 대한 정보를 가져오는 Github REST API 주소
             "url": "https://api.github.com/repos/Team-Yamu/Gitfolio/git/commits/6640c583ccb9664c814af9d04fba529f780bc8f7",
             "comment_count": 0,
             "verification": {
@@ -521,9 +528,13 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
                 "payload": null
             }
         },
+        // 해당 커밋에 대한 정보를 가져오는 Github REST API 주소
         "url": "https://api.github.com/repos/Team-Yamu/Gitfolio/commits/6640c583ccb9664c814af9d04fba529f780bc8f7",
+        // 해당 커밋에 대한 정보를 보여주는 Github 홈페이지 주소
         "html_url": "https://github.com/Team-Yamu/Gitfolio/commit/6640c583ccb9664c814af9d04fba529f780bc8f7",
+        // 커밋에 대한 댓글 정보를 가져오는 REST API 주소
         "comments_url": "https://api.github.com/repos/Team-Yamu/Gitfolio/commits/6640c583ccb9664c814af9d04fba529f780bc8f7/comments",
+        // 커밋을 작성한 작성자의 계정 정보를 가져오는 Github REST API, Github 웹 페이지 주소
         "author": {
             "login": "algo2000",
             "id": 51093294,
@@ -564,6 +575,7 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
             "type": "User",
             "site_admin": false
         },
+        // 정확한 역할을 모ㅈ름
         "parents": [
             {
                 "sha": "6f7b62b99985e5687b2490b6c37369982291e339",
@@ -572,6 +584,7 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
             }
         ]
     },
+    // 위와 동일
     {
         "sha": "6f7b62b99985e5687b2490b6c37369982291e339",
         "node_id": "MDY6Q29tbWl0MzIyMzMxNDI0OjZmN2I2MmI5OTk4NWU1Njg3YjI0OTBiNmMzNzM2OTk4MjI5MWUzMzk=",
