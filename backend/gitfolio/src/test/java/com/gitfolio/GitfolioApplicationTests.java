@@ -10,6 +10,7 @@ class GitfolioApplicationTests
     @Test
     void contextLoads()
     {
+
     }
 
 }

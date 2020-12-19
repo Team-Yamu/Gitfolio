@@ -1,4 +1,4 @@
-package com.gitfolio;
+package com.gitfolio.oauth;
 
 public class Registration {
 

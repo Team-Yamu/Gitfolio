@@ -1,4 +1,4 @@
-package com.gitfolio;
+package com.gitfolio.oauth;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
