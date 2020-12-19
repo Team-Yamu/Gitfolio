@@ -12,11 +12,9 @@
 
 #### 사용 방법
 
+[REST API](https://api.github.com/repos/{owner}/{repo}/commits "Github REST API 주소")
+
 GET 메소드를 사용해서 REST API 주소에 요청을 보낸다.
-
-#### 요청 방법
-
-[REST API](https://api.github.com/repos/{owner}/{repo}/commits "Commit list 가져오는 REST API")
 
 #### 실제 요청
 
@@ -380,9 +378,9 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
 
 #### 사용 방법
 
-POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
-
 [REST API](https://api.github.com/markdown "Github REST API 주소")
+
+POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 #### 실제 요청
 
@@ -449,9 +447,9 @@ POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 #### 사용 방법
 
-POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
-
 [REST API](https://api.github.com/markdown "Github REST API 주소")
+
+POST 메소드를 사용해서 REST API 주소에 요청을 보낸다.
 
 #### 실제 요청
 
@@ -526,9 +524,9 @@ Github REST API에 대한 간략한 설명
 
 #### 사용 방법
 
-사용 방법으로 설명해야 할 부분을 기입. 해당 메소드는 POST 형식이며 무엇을 주의해야 한다 등.
+[REST API](https://api.github.com/somethine_else "Github REST API 주소")
 
-[주소](https://api.github.com/somethine_else "Github REST API 주소")
+사용 방법으로 설명해야 할 부분을 기입. 해당 메소드는 POST 형식이며 무엇을 주의해야 한다 등.
 
 #### 실제 요청
 
