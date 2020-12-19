@@ -1,0 +1,7 @@
+services:
+  tomcat:
+    image: 'gitfolio'
+    restart: always
+    container_name: 'gitfolio'
+    ports:
+      - '8080:8080'

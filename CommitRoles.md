@@ -62,8 +62,4 @@ foo.py에서 호출하는 모듈 dir_fast/bar.py와 env_set/path_flags.py의 복
  - 한 일 1
  - 한 일 2
  - ...
-
-파일 이력
-[modified] README.md, test.css
-[new file] setup.py, App
 ```

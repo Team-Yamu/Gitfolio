@@ -1,0 +1,11 @@
+services:
+  mysql_gitfolio:
+    image: 'mysql_gitfolio'
+    restart: always
+    container_name: mysql_gitfolio
+    environment:
+      MYSQL_ROOT_PASSWORD: gitfolioqwer1234!!!!
+    ports:
+      - '3306:3306'
+    volumes:
+      - './mariadb_data:/var/lib/mysql'
