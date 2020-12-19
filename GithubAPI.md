@@ -6,7 +6,252 @@
 
 ## Commit
 
-### Commit list
+### Commit Info
+
+Github commit 정보를 응답으로 받을 수 있는 REST API.
+
+#### 사용 방법
+
+[REST API](https://api.github.comrepos/repos/{owner}/{repo}/commits/{ref} "Github REST API 주소")
+
+GET 메소드를 사용해서 REST API 주소에 요청을 보낸다.
+
+#### 실제 요청
+
+##### URL
+
+``` http request
+https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0
+```
+
+##### Header
+
+``` json
+{
+    "Accept": "application/vnd.github.v3+json"
+}
+```
+
+#### 실제 요청 설명
+
+##### Header
+
+``` json
+{
+// GET 요청에서 제외해도 문제 없지만, 공식 가이드 문서에서 삽입을 추천한다.
+    "Accept": "application/vnd.github.v3+json"
+}
+```
+
+#### 실제 응답
+
+``` json
+{
+    "sha": "ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    "node_id": "MDY6Q29tbWl0MjY4MjE2MzI2OmFjNzM0M2M2YTNhNjE5MGQyZjkxNzFiOGQ2YTJlMzRkMmM3NWM0ZTA=",
+    "commit": {
+        "author": {
+            "name": "seungupnoh",
+            "email": "soungho70_@naver.com",
+            "date": "2020-06-17T02:32:19Z"
+        },
+        "committer": {
+            "name": "seungupnoh",
+            "email": "soungho70_@naver.com",
+            "date": "2020-06-17T02:32:19Z"
+        },
+        "message": "up EC2 Docker Container와 연결되지 않는 소스코드들.\n\n도커 컨테이너와 연결시에 제대로 실행이 이루어지지 않을 수 있는 부분들입니다.",
+        "tree": {
+            "sha": "dbd77cdd1e315b0f61a9cd9ba3f39530c69cdd72",
+            "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/git/trees/dbd77cdd1e315b0f61a9cd9ba3f39530c69cdd72"
+        },
+        "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/git/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+        "comment_count": 1,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null
+        }
+    },
+    "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    "comments_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/comments",
+    "author": {
+        "login": "Seungup",
+        "id": 53374248,
+        "node_id": "MDQ6VXNlcjUzMzc0MjQ4",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/53374248?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Seungup",
+        "html_url": "https://github.com/Seungup",
+        "followers_url": "https://api.github.com/users/Seungup/followers",
+        "following_url": "https://api.github.com/users/Seungup/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Seungup/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Seungup/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Seungup/subscriptions",
+        "organizations_url": "https://api.github.com/users/Seungup/orgs",
+        "repos_url": "https://api.github.com/users/Seungup/repos",
+        "events_url": "https://api.github.com/users/Seungup/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Seungup/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "Seungup",
+        "id": 53374248,
+        "node_id": "MDQ6VXNlcjUzMzc0MjQ4",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/53374248?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Seungup",
+        "html_url": "https://github.com/Seungup",
+        "followers_url": "https://api.github.com/users/Seungup/followers",
+        "following_url": "https://api.github.com/users/Seungup/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Seungup/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Seungup/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Seungup/subscriptions",
+        "organizations_url": "https://api.github.com/users/Seungup/orgs",
+        "repos_url": "https://api.github.com/users/Seungup/repos",
+        "events_url": "https://api.github.com/users/Seungup/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Seungup/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "2a91c220f2bd62f717c18676d13e9dfbc9709a48",
+            "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/2a91c220f2bd62f717c18676d13e9dfbc9709a48",
+            "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/2a91c220f2bd62f717c18676d13e9dfbc9709a48"
+        }
+    ],
+    "stats": {
+        "total": 4,
+        "additions": 2,
+        "deletions": 2
+    },
+    "files": [
+        {
+            "sha": "8637d71910b6a08e06645e5a80f20ef3e97f3e3b",
+            "filename": "JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4,
+            "blob_url": "https://github.com/Team-Yamu/JavaWeb/blob/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            "raw_url": "https://github.com/Team-Yamu/JavaWeb/raw/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            "contents_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/contents/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java?ref=ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+            "patch": "@@ -32,8 +32,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res\n             {\n                 ConsoleCommand cmd = new ConsoleCommand();\n \n-                // EC2 Container 에서의 main.py 위치는 다음과 같음.\n-                String command = cmd.inputCommand(\"python /bin/bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n+                // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py\n+                String command = cmd.inputCommand(\"python ./bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n                 //String command = cmd.inputCommand(\" cd D:\\\\GitHubRepo\\\\YAMU2020\\\\JavaWeb\\\\Python Features\\\\nltk && d: && python main.py \" + wordBean.getWordName()) +\" -all\";\n                 String result = cmd.execCommand(command);\n                 wordBean.setJsonData(result);"
+        }
+    ]
+}
+```
+
+#### 실제 응답 설명
+
+``` json
+{
+    "sha": "ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    "node_id": "MDY6Q29tbWl0MjY4MjE2MzI2OmFjNzM0M2M2YTNhNjE5MGQyZjkxNzFiOGQ2YTJlMzRkMmM3NWM0ZTA=",
+    "commit": {
+        "author": {
+            "name": "seungupnoh",
+            "email": "soungho70_@naver.com",
+            "date": "2020-06-17T02:32:19Z"
+        },
+        "committer": {
+            "name": "seungupnoh",
+            "email": "soungho70_@naver.com",
+            "date": "2020-06-17T02:32:19Z"
+        },
+        "message": "up EC2 Docker Container와 연결되지 않는 소스코드들.\n\n도커 컨테이너와 연결시에 제대로 실행이 이루어지지 않을 수 있는 부분들입니다.",
+        "tree": {
+            "sha": "dbd77cdd1e315b0f61a9cd9ba3f39530c69cdd72",
+            "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/git/trees/dbd77cdd1e315b0f61a9cd9ba3f39530c69cdd72"
+        },
+        "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/git/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+        "comment_count": 1,
+        "verification": {
+            "verified": false,
+            "reason": "unsigned",
+            "signature": null,
+            "payload": null
+        }
+    },
+    "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+    "comments_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/comments",
+    "author": {
+        "login": "Seungup",
+        "id": 53374248,
+        "node_id": "MDQ6VXNlcjUzMzc0MjQ4",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/53374248?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Seungup",
+        "html_url": "https://github.com/Seungup",
+        "followers_url": "https://api.github.com/users/Seungup/followers",
+        "following_url": "https://api.github.com/users/Seungup/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Seungup/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Seungup/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Seungup/subscriptions",
+        "organizations_url": "https://api.github.com/users/Seungup/orgs",
+        "repos_url": "https://api.github.com/users/Seungup/repos",
+        "events_url": "https://api.github.com/users/Seungup/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Seungup/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "committer": {
+        "login": "Seungup",
+        "id": 53374248,
+        "node_id": "MDQ6VXNlcjUzMzc0MjQ4",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/53374248?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Seungup",
+        "html_url": "https://github.com/Seungup",
+        "followers_url": "https://api.github.com/users/Seungup/followers",
+        "following_url": "https://api.github.com/users/Seungup/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Seungup/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Seungup/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Seungup/subscriptions",
+        "organizations_url": "https://api.github.com/users/Seungup/orgs",
+        "repos_url": "https://api.github.com/users/Seungup/repos",
+        "events_url": "https://api.github.com/users/Seungup/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Seungup/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "parents": [
+        {
+            "sha": "2a91c220f2bd62f717c18676d13e9dfbc9709a48",
+            "url": "https://api.github.com/repos/Team-Yamu/JavaWeb/commits/2a91c220f2bd62f717c18676d13e9dfbc9709a48",
+            "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/2a91c220f2bd62f717c18676d13e9dfbc9709a48"
+        }
+    ],
+    "stats": {
+        "total": 4,
+        "additions": 2,
+        "deletions": 2
+    },
+    "files": [
+        {
+            "sha": "8637d71910b6a08e06645e5a80f20ef3e97f3e3b",
+            "filename": "JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4,
+            "blob_url": "https://github.com/Team-Yamu/JavaWeb/blob/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            "raw_url": "https://github.com/Team-Yamu/JavaWeb/raw/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            "contents_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/contents/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java?ref=ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+            "patch": "@@ -32,8 +32,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res\n             {\n                 ConsoleCommand cmd = new ConsoleCommand();\n \n-                // EC2 Container 에서의 main.py 위치는 다음과 같음.\n-                String command = cmd.inputCommand(\"python /bin/bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n+                // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py\n+                String command = cmd.inputCommand(\"python ./bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n                 //String command = cmd.inputCommand(\" cd D:\\\\GitHubRepo\\\\YAMU2020\\\\JavaWeb\\\\Python Features\\\\nltk && d: && python main.py \" + wordBean.getWordName()) +\" -all\";\n                 String result = cmd.execCommand(command);\n                 wordBean.setJsonData(result);"
+        }
+    ]
+}
+```
+
+위와 같이 코드가 있는 경우 코드의 아랫 부분에 설명을 기입. 예를 들어 json 형식으로 요청을 하며, key, value 형식이다
+
+### Commit List
 
 깃허브의 저장소 커밋 정보를 얻을 수 있는 REST API.
 
@@ -529,6 +774,12 @@ Github REST API에 대한 간략한 설명
 사용 방법으로 설명해야 할 부분을 기입. 해당 메소드는 POST 형식이며 무엇을 주의해야 한다 등.
 
 #### 실제 요청
+
+##### URL
+
+```http request
+
+```
 
 ``` json
 {
