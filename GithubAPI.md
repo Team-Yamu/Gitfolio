@@ -117,8 +117,6 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
         "type": "User",
         "site_admin": false
     },
-    // 커밋 정보를 가져오는 REST API
-    // sha 정보는 예제에서 사용된 값과 다르지만 동일한 커밋 정보를 가져오므로, 확인이 필요함.
     "parents": [
         {
             "sha": "2a91c220f2bd62f717c18676d13e9dfbc9709a48",
@@ -126,38 +124,22 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
             "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/2a91c220f2bd62f717c18676d13e9dfbc9709a48"
         }
     ],
-    // 커밋 통계
     "stats": {
         "total": 4,
-        // 추가된 코드: 2줄
         "additions": 2,
-        // 삭제된 코드: 2줄
         "deletions": 2
     },
-    // 편집된 파일에 대한 정보
     "files": [
         {
-            // 파일의 하쉬값
             "sha": "8637d71910b6a08e06645e5a80f20ef3e97f3e3b",
-            // 파일명
             "filename": "JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
-            // 파일 상태
             "status": "modified",
-            // 추가된 코드: 2줄
             "additions": 2,
-            // 삭제된 코드: 2줄
             "deletions": 2,
             "changes": 4,
-            // 변경된 파일 내용 보기
             "blob_url": "https://github.com/Team-Yamu/JavaWeb/blob/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
-            // 변경된 파일 내용 raw 보기(CSS 없이)
             "raw_url": "https://github.com/Team-Yamu/JavaWeb/raw/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
-            // 파일에 다한 Github REST API 주소
             "contents_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/contents/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java?ref=ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
-            // 파일 변경 내역
-            // 전 문장의 개헹 문자 '\n' 다음에 - 혹은 + 기호를 기반으로 다음에 나올 줄이 삭제된 줄인지, 추가된 줄인지를 구분
-            // 예: 문자열1\n+문자열2\n-문자열3
-            문자열2는 추가된 줄이고, 문자열 3은 삭제된 줄임
             "patch": "@@ -32,8 +32,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res\n             {\n                 ConsoleCommand cmd = new ConsoleCommand();\n \n-                // EC2 Container 에서의 main.py 위치는 다음과 같음.\n-                String command = cmd.inputCommand(\"python /bin/bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n+                // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py\n+                String command = cmd.inputCommand(\"python ./bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n                 //String command = cmd.inputCommand(\" cd D:\\\\GitHubRepo\\\\YAMU2020\\\\JavaWeb\\\\Python Features\\\\nltk && d: && python main.py \" + wordBean.getWordName()) +\" -all\";\n                 String result = cmd.execCommand(command);\n                 wordBean.setJsonData(result);"
         }
     ]
@@ -255,6 +237,8 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
         "type": "User",
         "site_admin": false
     },
+    // 커밋 정보를 가져오는 REST API
+    // sha 정보는 예제에서 사용된 값과 다르지만 동일한 커밋 정보를 가져오므로, 확인이 필요함.
     "parents": [
         {
             "sha": "2a91c220f2bd62f717c18676d13e9dfbc9709a48",
@@ -262,22 +246,38 @@ https://api.github.com/repos/Team-Yamu/JavaWeb/commits/ac7343c6a3a6190d2f9171b8d
             "html_url": "https://github.com/Team-Yamu/JavaWeb/commit/2a91c220f2bd62f717c18676d13e9dfbc9709a48"
         }
     ],
+    // 커밋 통계
     "stats": {
         "total": 4,
+        // 추가된 코드: 2줄
         "additions": 2,
+        // 삭제된 코드: 2줄
         "deletions": 2
     },
+    // 편집된 파일에 대한 정보
     "files": [
         {
+            // 파일의 하쉬값
             "sha": "8637d71910b6a08e06645e5a80f20ef3e97f3e3b",
+            // 파일명
             "filename": "JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            // 파일 상태
             "status": "modified",
+            // 추가된 코드: 2줄
             "additions": 2,
+            // 삭제된 코드: 2줄
             "deletions": 2,
             "changes": 4,
+            // 변경된 파일 내용 보기
             "blob_url": "https://github.com/Team-Yamu/JavaWeb/blob/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            // 변경된 파일 내용 raw 보기(CSS 없이)
             "raw_url": "https://github.com/Team-Yamu/JavaWeb/raw/ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java",
+            // 파일에 다한 Github REST API 주소
             "contents_url": "https://api.github.com/repos/Team-Yamu/JavaWeb/contents/JavaWeb/Web/src/com/wordlistpage/action/svc/AddWordAction.java?ref=ac7343c6a3a6190d2f9171b8d6a2e34d2c75c4e0",
+            // 파일 변경 내역
+            // 전 문장의 개헹 문자 '\n' 다음에 - 혹은 + 기호를 기반으로 다음에 나올 줄이 삭제된 줄인지, 추가된 줄인지를 구분
+            // 예: 문자열1\n+문자열2\n-문자열3
+            // 문자열2는 추가된 줄이고, 문자열 3은 삭제된 줄임
             "patch": "@@ -32,8 +32,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res\n             {\n                 ConsoleCommand cmd = new ConsoleCommand();\n \n-                // EC2 Container 에서의 main.py 위치는 다음과 같음.\n-                String command = cmd.inputCommand(\"python /bin/bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n+                // EC2 Container 에서의 main.py 위치는 다음과 같음. /bin/bin/nltk/main.py\n+                String command = cmd.inputCommand(\"python ./bin/nltk/main.py \" + wordBean.getWordName()) +\" -all\";\n                 //String command = cmd.inputCommand(\" cd D:\\\\GitHubRepo\\\\YAMU2020\\\\JavaWeb\\\\Python Features\\\\nltk && d: && python main.py \" + wordBean.getWordName()) +\" -all\";\n                 String result = cmd.execCommand(command);\n                 wordBean.setJsonData(result);"
         }
     ]
@@ -575,7 +575,7 @@ https://api.github.com/repos/Team-Yamu/Gitfolio/commits
             "type": "User",
             "site_admin": false
         },
-        // 정확한 역할을 모ㅈ름
+        // 정확한 역할 모름
         "parents": [
             {
                 "sha": "6f7b62b99985e5687b2490b6c37369982291e339",
