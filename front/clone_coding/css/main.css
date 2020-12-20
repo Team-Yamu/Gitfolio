@@ -1,0 +1,165 @@
+a, a:link, a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+h4, p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header {
+    max-width: 1376px;
+    height: 4rem;
+    margin: 0 auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    top: 0;
+    position: sticky;
+}
+
+#header_container {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    font-size: 1.5rem;
+}
+
+#header_left {
+    display: inline-flex;
+    align-items: center;
+}
+
+#header_logo {
+    width: 28px;
+    height: 28px;
+}
+
+#blog_title {
+    margin-left: 1rem;
+}
+
+#header_right {
+}
+
+#button_login {
+    height: 2rem;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    background-color: rgb(52, 58, 64);
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+main {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+#user_info_container {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+#user_info_data_container {
+    margin-left: 1rem;
+}
+#user_info_data {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#user_name {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+#user_description {
+    color: rgb(73, 80, 87);
+}
+
+hr {
+    color: rgb(233, 236, 239);
+}
+
+#user_icon {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+
+#post_selector_container {
+    max-width: 50%;
+    margin: 4.5rem auto;
+    min-height: 48px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+#post_selector_container > ul{
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#post_selector_container li {
+    min-width: 128px;
+    height: 100%;
+}
+
+#post_selector_series {
+    border-bottom: 2px solid rgb(32, 201, 151);
+}
+
+#post_selector_container > ul > li > a {
+    color: rgb(32, 201, 151);
+
+}
+
+#post_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 1rem));
+    justify-content: space-between;
+}
+
+.post {
+    margin-bottom: 3rem;
+}
+
+.post_image_href {
+    height: 200px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.post_image {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+.post_title {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.post_info_last_update {
+    font-size: 0.8rem;
+    color: rgb(134, 142, 150);
+}
