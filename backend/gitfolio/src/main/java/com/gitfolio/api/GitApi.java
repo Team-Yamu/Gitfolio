@@ -102,6 +102,19 @@ public class GitApi {
         return rtv;
     }
 
+    @GetMapping("/api/commit")
+    public Object getCommitDetail(
+            Principal principal,
+            @PathVariable("full_name") String fullName,
+            @PathVariable("sha") String sha
+    ) throws IOException {
+        Long toLongId = Long.parseLong(principal.getName());
+        Member member = memberRepository.getOne(toLongId);
+        String targetUrl = "https://api.github.com/repos/" + fullName + "/commits/" + sha;
+        String auth = "token " + member.getAccessToken();;
+        return getUrlResponse(targetUrl, auth);
+    }
+
     @GetMapping("/api/commits")
     public Object getCommitList(
             Principal principal,
@@ -109,9 +122,8 @@ public class GitApi {
     ) throws IOException {
         Long toLongId = Long.parseLong(principal.getName());
         Member member = memberRepository.getOne(toLongId);
-        String accessToken = member.getAccessToken();
         String targetUrl = "https://api.github.com/repos/" + full_name + "/commits";
-        String auth = "token " + accessToken;
+        String auth = "token " + member.getAccessToken();
         return getUrlResponse(targetUrl, auth);
     }
 

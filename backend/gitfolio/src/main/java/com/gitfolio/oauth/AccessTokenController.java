@@ -1,6 +1,5 @@
 package com.gitfolio.oauth;
 
-import com.gitfolio.board.Board;
 import com.gitfolio.board.BoardService;
 import com.gitfolio.user.Member;
 import com.gitfolio.user.MemberRepository;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
