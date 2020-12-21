@@ -47,14 +47,18 @@ public class BoardService {
     }
 
     @Transactional
-    public boolean insertBoard(String title, String viewContent,
+    public boolean insertBoard(String title,
+                               String viewContent,
                                String originalContent,
-                               String tag, Principal principal) {
+                               String previewImageUrl,
+                               String tag,
+                               Principal principal) {
         Optional<Member> op_member = memberRepository.findById(Long.parseLong(principal.getName(), 10));
         if(op_member.isEmpty()) { return false; }
         Member member = op_member.get();
         Board board = new Board();
         board.setRegisterId(member.getId());
+        board.setPreviewImageUrl(previewImageUrl);
         board.setTag(tag);
         board.setViewContent(viewContent);
         board.setOriginalContent(originalContent);

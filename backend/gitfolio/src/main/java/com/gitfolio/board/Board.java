@@ -32,6 +32,9 @@ public class Board {
     private LocalDateTime registerDateTime;
 
     @Column
+    private String previewImageUrl;
+
+    @Column
     private String tag;
 
     @Column

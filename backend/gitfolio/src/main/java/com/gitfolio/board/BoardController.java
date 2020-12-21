@@ -29,9 +29,10 @@ public class BoardController {
     public boolean insertBoard(@RequestParam("title") String title,
                                @RequestParam("viewContent") String viewContent,
                                @RequestParam("originalContent") String originalContent,
+                               @RequestParam("previewImageUrl") String previewImageUrl,
                                @RequestParam("tag") String tag,
                                Principal principal) {
-        return boardService.insertBoard(title, viewContent, originalContent, tag, principal);
+        return boardService.insertBoard(title, viewContent, originalContent, previewImageUrl, tag, principal);
     }
 
     @RequestMapping(value = "/board/{boardId}", method = RequestMethod.DELETE)

@@ -19,7 +19,7 @@ public class Member {
     @Id
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String login;
 
     @Column
