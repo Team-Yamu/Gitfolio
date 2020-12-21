@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.Principal;
@@ -102,7 +103,7 @@ public class GitApi {
     }
 
     @GetMapping("/api/commits")
-    public String getCommitList(
+    public Object getCommitList(
             Principal principal,
             @RequestParam("full_name") String full_name
     ) throws IOException {
@@ -111,6 +112,21 @@ public class GitApi {
         String accessToken = member.getAccessToken();
         String targetUrl = "https://api.github.com/repos/" + full_name + "/commits";
         String auth = "token " + accessToken;
+        return getUrlResponse(targetUrl, auth);
+    }
+
+    @GetMapping("/api/repos")
+    public Object getRepos(
+            Principal principal
+    ) throws IOException {
+        Long toLongId = Long.parseLong(principal.getName());
+        Member member = memberRepository.getOne(toLongId);
+        String targetUrl = member.getReposUrl();
+        String auth = "token " + member.getAccessToken();
+        return getUrlResponse(targetUrl, auth);
+    }
+
+    private Object getUrlResponse(String targetUrl, String auth) throws IOException {
         URL url = new URL(targetUrl);
         URLConnection httpConnection = url.openConnection();
         httpConnection.setRequestProperty ("Authorization", auth);
