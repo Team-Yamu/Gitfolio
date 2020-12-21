@@ -2,21 +2,14 @@ package com.gitfolio.api;
 
 import com.gitfolio.board.Board;
 import com.gitfolio.board.BoardRepository;
-import com.gitfolio.board.BoardService;
 import com.gitfolio.user.Member;
 import com.gitfolio.user.MemberRepository;
-import com.gitfolio.user.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.Principal;
