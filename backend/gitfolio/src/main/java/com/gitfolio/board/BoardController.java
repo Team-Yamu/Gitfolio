@@ -14,9 +14,6 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @Autowired
-    private BoardRepository boardRepository;
-
     @RequestMapping(value = "/board/uploader/{registerId}", method = RequestMethod.GET)
     public List<Board> findByRegisterId(@PathVariable("registerId") long registerId) {
         return boardService.selectByRegisterId(registerId);
@@ -30,10 +27,11 @@ public class BoardController {
 
     @RequestMapping(value = "/board", method = RequestMethod.POST)
     public boolean insertBoard(@RequestParam("title") String title,
-                               @RequestParam("content") String content,
+                               @RequestParam("viewContent") String viewContent,
+                               @RequestParam("originalContent") String originalContent,
                                @RequestParam("tag") String tag,
                                Principal principal) {
-        return boardService.insertBoard(title, content, tag, principal);
+        return boardService.insertBoard(title, viewContent, originalContent, tag, principal);
     }
 
     @RequestMapping(value = "/board/{boardId}", method = RequestMethod.DELETE)
@@ -44,10 +42,11 @@ public class BoardController {
 
     @RequestMapping(value = "/board/{boardId}", method = RequestMethod.PATCH)
     public boolean updateBoard(@RequestParam("title") String title,
-                               @RequestParam("content") String content,
+                               @RequestParam("viewContent") String viewContent,
+                               @RequestParam("originalContent") String originalContent,
                                @RequestParam("tag") String tag,
                                @PathVariable("boardId") long boardId,
                                Principal principal) {
-        return boardService.updateBoard(boardId, title, content, tag, principal);
+        return boardService.updateBoard(boardId, title, viewContent, originalContent, tag, principal);
     }
 }

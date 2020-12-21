@@ -20,7 +20,10 @@ public class Board {
     private String title;
 
     @Column(nullable = false)
-    private String content;
+    private String viewContent;
+
+    @Column(nullable = false)
+    private String originalContent;
 
     @Column(nullable = false)
     private Long registerId;

@@ -22,7 +22,8 @@ public class BoardService {
     private MemberRepository memberRepository;
 
     @Transactional
-    public boolean updateBoard(long id, String title, String content, String tag, Principal principal) {
+    public boolean updateBoard(long id, String title, String viewContent,
+                               String originalContent, String tag, Principal principal) {
         Long currentId = Long.getLong(principal.getName());
         if(currentId != id) { return false; }
 
@@ -33,7 +34,8 @@ public class BoardService {
             if (op_board.isPresent()) {
                 Board board = op_board.get();
                 if (board.getRegisterId().equals(member.getId())) {
-                    board.setContent(content);
+                    board.setOriginalContent(originalContent);
+                    board.setViewContent(viewContent);
                     board.setTitle(title);
                     board.setTag(tag);
                     boardRepository.save(board);
@@ -45,14 +47,17 @@ public class BoardService {
     }
 
     @Transactional
-    public boolean insertBoard(String title, String content, String tag, Principal principal) {
+    public boolean insertBoard(String title, String viewContent,
+                               String originalContent,
+                               String tag, Principal principal) {
         Optional<Member> op_member = memberRepository.findById(Long.parseLong(principal.getName(), 10));
         if(op_member.isEmpty()) { return false; }
         Member member = op_member.get();
         Board board = new Board();
         board.setRegisterId(member.getId());
         board.setTag(tag);
-        board.setContent(content);
+        board.setViewContent(viewContent);
+        board.setOriginalContent(originalContent);
         board.setTitle(title);
         boardRepository.save(board);
         return true;
