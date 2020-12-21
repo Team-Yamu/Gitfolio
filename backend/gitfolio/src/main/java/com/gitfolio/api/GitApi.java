@@ -70,7 +70,7 @@ public class GitApi {
     }
 
     private Map<String, Object> getStringObjectMap(Map<String, Object> rtv, Member member) {
-        Optional<List<Board>> op_boards = boardRepository.findByRegisterId(member.getId());
+        Optional<List<Board>> op_boards = boardRepository.findByRegisterIdOrderByRegisterDateTimeDesc(member.getId());
         List<Map<String, Object>> mapArrayList = new ArrayList<>();
         if (op_boards.isPresent()) {
             List<Board> boards = op_boards.get();

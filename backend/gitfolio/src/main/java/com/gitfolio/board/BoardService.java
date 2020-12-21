@@ -86,7 +86,7 @@ public class BoardService {
     }
 
     public List<Board> selectByRegisterId(Long id) {
-        Optional<List<Board>> op_list = boardRepository.findByRegisterId(id);
+        Optional<List<Board>> op_list = boardRepository.findByRegisterIdOrderByRegisterDateTimeDesc(id);
         List<Board> list = new ArrayList<>();
         if(op_list.isPresent()) {
             list = op_list.get();

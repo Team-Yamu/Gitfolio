@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
-    public Optional<List<Board>> findByRegisterId(Long id);
+    public Optional<List<Board>> findByRegisterIdOrderByRegisterDateTimeDesc(Long id);
     public void deleteBoardById(Long id);
 }
