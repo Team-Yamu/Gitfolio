@@ -36,7 +36,7 @@ public class Board implements Serializable {
     @Column(nullable = false)
     private LocalDateTime registerDateTime;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime updateDateTime;
 
     @Column
