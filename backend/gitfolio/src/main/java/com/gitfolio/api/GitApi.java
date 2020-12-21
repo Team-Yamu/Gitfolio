@@ -10,8 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.security.Principal;
 import java.util.*;
 
@@ -24,6 +30,15 @@ public class GitApi {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @GetMapping("/api")
+    public Object something(Principal principal) {
+        Long toLongId = Long.parseLong(principal.getName());
+        Member member = memberRepository.getOne(toLongId);
+        String accessToken = member.getAccessToken();
+
+        return principal.getName();
+    }
 
     @GetMapping("/api/user/{userId}")
     public Map<String, Object> getUserDashBoard(
@@ -81,7 +96,31 @@ public class GitApi {
         rtv.put("location", member.getLocation());
         rtv.put("url", member.getUrl());
         rtv.put("avatar_url", member.getAvatarUrl());
+        rtv.put("repos_url", member.getReposUrl());
 
+        return rtv;
+    }
+
+    @GetMapping("/api/commits")
+    public String getCommitList(
+            Principal principal,
+            @RequestParam("full_name") String full_name
+    ) throws IOException {
+        Long toLongId = Long.parseLong(principal.getName());
+        Member member = memberRepository.getOne(toLongId);
+        String accessToken = member.getAccessToken();
+        String targetUrl = "https://api.github.com/repos/" + full_name + "/commits";
+        String auth = "token " + accessToken;
+        URL url = new URL(targetUrl);
+        URLConnection httpConnection = url.openConnection();
+        httpConnection.setRequestProperty ("Authorization", auth);
+        InputStream is = httpConnection.getInputStream();
+        Scanner scanner = new Scanner(is);
+        String rtv = "";
+        while (scanner.hasNext()) {
+            rtv = rtv + scanner.next();
+        }
+        scanner.close();
         return rtv;
     }
 }
