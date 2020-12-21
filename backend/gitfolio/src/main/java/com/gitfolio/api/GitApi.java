@@ -53,6 +53,7 @@ public class GitApi {
                 metaData.put("title", board.getTitle());
                 metaData.put("register_date_time", board.getRegisterDateTime());
                 metaData.put("update_date_time", board.getUpdateDateTime());
+                metaData.put("id", board.getId());
                 mapArrayList.add(metaData);
             }
         }
