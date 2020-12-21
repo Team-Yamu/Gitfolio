@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.util.*;
 
@@ -135,13 +138,20 @@ public class GitApi {
         URL url = new URL(targetUrl);
         URLConnection httpConnection = url.openConnection();
         httpConnection.setRequestProperty ("Authorization", auth);
-        InputStream is = httpConnection.getInputStream();
-        Scanner scanner = new Scanner(is);
-        StringBuilder rtv = new StringBuilder();
-        while (scanner.hasNext()) {
-            rtv.append(scanner.next());
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        conn.setRequestMethod("GET");
+
+        // 응답 내용(BODY) 구하기
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        InputStream in = httpConnection.getInputStream();
+        byte[] buf = new byte[1024 * 8];
+        int length = 0;
+        while ((length = in.read(buf)) != -1) {
+            out.write(buf, 0, length);
         }
-        scanner.close();
-        return rtv.toString();
+        conn.disconnect();
+        return out.toString(StandardCharsets.UTF_8);
     }
 }
