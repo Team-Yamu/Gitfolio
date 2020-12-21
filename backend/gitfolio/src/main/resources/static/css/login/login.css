@@ -1,0 +1,47 @@
+.container {
+    background-color: rgb(240, 240, 240);
+    width: 240px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    padding: 20px;
+    border-radius: 30px;
+
+    border-radius: 30px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 20px 20px 0px #b3b3b3,
+    -20px -20px 0px #e2e2e2;
+}
+
+.logo {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.btn {
+    display: block;
+    border-radius: 10px;
+    width: 200px;
+    height: 35px;
+    padding: 0px 10px;
+    line-height: 30px;
+    margin: auto;
+}
+
+.btn-github {
+    background: linear-gradient(145deg, #232323, #1e1e1e);
+    color: white;
+    text-decoration: none;
+    height: 100%;
+}
+
+.icon {
+    vertical-align: middle;
+}
+
+.btn-text {
+    margin-left: 15px;
+    vertical-align: middle;
+}
