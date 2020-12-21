@@ -54,6 +54,6 @@ public class BoardController {
                                @RequestParam("tag") String tag,
                                @PathVariable("boardId") long boardId,
                                Principal principal) {
-        return boardService.updateBoard(boardId, principal, title, content, tag);
+        return boardService.updateBoard(boardId, title, content, tag, principal);
     }
 }

@@ -21,10 +21,11 @@ public class BoardService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public boolean updateBoard(long id, Principal principal, String title, String content, String tag) {
-        boolean success = false;
-        String principalName = principal.getName();
-        Optional<Member> op_member = memberRepository.findByPrincipalName(principalName);
+    public boolean updateBoard(long id, String title, String content, String tag, Principal principal) {
+        Long currentId = Long.getLong(principal.getName());
+        if(currentId != id) { return false; }
+
+        Optional<Member> op_member = memberRepository.findById(id);
         if(op_member.isPresent()) {
             Member member = op_member.get();
             Optional<Board> op_board = boardRepository.findById(id);
@@ -35,16 +36,15 @@ public class BoardService {
                     board.setTitle(title);
                     board.setTag(tag);
                     boardRepository.save(board);
-                    success = true;
+                    return true;
                 }
             }
         }
-        return success;
+        return false;
     }
 
     public boolean insertBoard(String title, String content, String tag, Principal principal) {
-        System.err.println("CALLED ! ");
-        Optional<Member> op_member = memberRepository.findByPrincipalName(principal.getName());
+        Optional<Member> op_member = memberRepository.findById(Long.getLong(principal.getName()));
         if(op_member.isEmpty()) { return false; }
         Member member = op_member.get();
         Board board = new Board();
@@ -58,7 +58,7 @@ public class BoardService {
 
     public boolean deleteBoard(long id, Principal principal) {
         Optional<Board> op_board = boardRepository.findById(id);
-        Optional<Member> op_member = memberRepository.findByPrincipalName(principal.getName());
+        Optional<Member> op_member = memberRepository.findById(Long.getLong(principal.getName()));
         if(op_member.isEmpty()) { return false; }
         Member member = op_member.get();
         if(op_board.isPresent()) {

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Component
 @Service
@@ -13,11 +12,18 @@ public class MemberService {
     private MemberRepository memberRepository;
 
     public boolean joinMember(Member member) {
-        boolean success = false;
-        if(!memberRepository.existsByPrincipalName(member.getPrincipalName())) {
+        if(!memberRepository.existsById(member.getId())) {
             memberRepository.save(member);
-            success = true;
+            return true;
         }
-        return success;
+        return false;
+    }
+
+    public boolean updateMember(Member member) {
+        if(memberRepository.existsById(member.getId())) {
+            memberRepository.save(member);
+            return true;
+        }
+        return false;
     }
 }
