@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 import java.util.*;
 
 @RestController
@@ -22,12 +23,9 @@ public class GitApi {
     private MemberRepository memberRepository;
 
     @Autowired
-    private BoardService boardService;
-
-    @Autowired
     private BoardRepository boardRepository;
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/api/user/{userId}")
     public Map<String, Object> getUserDashBoard(
             @PathVariable("userId") String userId,
             HttpServletResponse response
@@ -41,6 +39,21 @@ public class GitApi {
 
         Member member = op_member.get();
 
+        return getStringObjectMap(rtv, member);
+    }
+
+    @GetMapping("/api/user")
+    public Map<String, Object> getUserDashBoard(
+            Principal principal,
+            HttpServletResponse response
+    ) {
+        Map<String, Object> rtv = new HashMap<>();
+        Long toLongid = Long.parseLong(principal.getName());
+        Member member = memberRepository.getOne(toLongid);
+        return getStringObjectMap(rtv, member);
+    }
+
+    private Map<String, Object> getStringObjectMap(Map<String, Object> rtv, Member member) {
         Optional<List<Board>> op_boards = boardRepository.findByRegisterId(member.getId());
         List<Map<String, Object>> mapArrayList = new ArrayList<>();
         if (op_boards.isPresent()) {
@@ -57,6 +70,7 @@ public class GitApi {
                 mapArrayList.add(metaData);
             }
         }
+
         rtv.put("board_metadata", mapArrayList);
         rtv.put("login", member.getLogin());
         rtv.put("id", member.getId());

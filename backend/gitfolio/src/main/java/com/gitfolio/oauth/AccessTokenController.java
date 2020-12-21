@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +36,8 @@ public class AccessTokenController {
     public Object accessToken(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
                               @AuthenticationPrincipal OAuth2User oAuth2User,
                               HttpServletRequest request,
-                              Principal principal) {
+                              Principal principal,
+                              Model model) {
         HttpSession session = request.getSession();
         session.setAttribute("access_token", authorizedClient.getAccessToken().getTokenValue());
         long toLongId = Long.parseLong(principal.getName(), 10);
