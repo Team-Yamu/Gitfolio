@@ -105,8 +105,8 @@ public class GitApi {
     @GetMapping("/api/commit")
     public Object getCommitDetail(
             Principal principal,
-            @PathVariable("full_name") String fullName,
-            @PathVariable("sha") String sha
+            @RequestParam("full_name") String fullName,
+            @RequestParam("sha") String sha
     ) throws IOException {
         Long toLongId = Long.parseLong(principal.getName());
         Member member = memberRepository.getOne(toLongId);
