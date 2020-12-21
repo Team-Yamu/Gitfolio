@@ -112,6 +112,9 @@ public class Member {
     @Column
     private String updatedAt;
 
+    @Column
+    private String accessToken;
+
     public Member(OAuth2User user, boolean isSiteAdmin) {
         id = ((Number) Objects.requireNonNull(user.getAttribute("id"))).longValue();
         login = user.getAttribute("login");

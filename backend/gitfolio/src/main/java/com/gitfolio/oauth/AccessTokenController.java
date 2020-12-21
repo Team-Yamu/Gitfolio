@@ -37,7 +37,13 @@ public class AccessTokenController {
         long toLongId = Long.parseLong(principal.getName(), 10);
         if(!memberRepository.existsById(toLongId)) {
             Member member = new Member(oAuth2User, false);
+            member.setAccessToken(authorizedClient.getAccessToken().getTokenValue());
             memberService.joinMember(member);
+        } else {
+            Member member = memberRepository.getOne(toLongId);
+            Member updatedMember = new Member(oAuth2User, member.isSiteAdmin());
+            updatedMember.setAccessToken(authorizedClient.getAccessToken().getTokenValue());
+            memberService.updateMember(updatedMember);
         }
 
         return oAuth2User.getAttributes();
