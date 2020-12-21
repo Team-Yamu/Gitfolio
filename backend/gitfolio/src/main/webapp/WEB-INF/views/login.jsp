@@ -1,31 +1,46 @@
-<%@ page import="com.gitfolio.oauth.Registration" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: leo
   Date: 20. 12. 20.
   Time: 오전 7:37
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="com.gitfolio.oauth.Registration" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="include/head.jsp"/>
+    <link rel="stylesheet" href="resources/css/login/login.css"/>
+    <title>login</title>
 </head>
 <body>
+<jsp:include page="include/header.jsp"/>
+<div class="container">
+    <svg class="logo" width="112.119" height="30.274" viewBox="0 0 112.119 30.274">
+        <path
+                d="M103.568,25.6v-.585c0-6.124,3.549-9.789,8.775-9.789,5.459,0,8.775,3.549,8.775,9.672v.545c0,6.162-3.588,9.828-8.815,9.828C106.844,35.275,103.568,31.765,103.568,25.6Zm3.042-.9v.975c0,5.382,2.534,7.137,5.772,7.137,3.51,0,5.694-2.457,5.694-7.02v-.975c0-5.382-2.614-7.137-5.773-7.137C108.794,17.686,106.61,20.182,106.61,24.706Zm-41.575.9v-.585c0-6.124,3.55-9.789,8.775-9.789,5.46,0,8.775,3.549,8.775,9.672v.545c0,6.162-3.587,9.828-8.814,9.828C68.312,35.275,65.036,31.765,65.036,25.6Zm3.042-.9v.975c0,5.382,2.535,7.137,5.773,7.137,3.51,0,5.693-2.457,5.693-7.02v-.975c0-5.382-2.613-7.137-5.772-7.137C70.262,17.686,68.078,20.182,68.078,24.706ZM96.041,34.924v-19.3h2.965v19.3Zm-8.892,0V7h3V34.924ZM11,21.366v-.7c0-9.828,5.773-13.338,12.363-13.338a14.329,14.329,0,0,1,6.825,1.521v2.691a15.126,15.126,0,0,0-7.059-1.6c-6.513,0-8.814,4.758-8.814,10.3v1.053c0,6.084,1.872,10.452,8.892,10.452a14.921,14.921,0,0,0,4.914-.779V23.823H22.505V21.249h8.658v11.66a23.132,23.132,0,0,1-8.034,1.444C15.719,34.353,11,30.335,11,21.366Zm35.608,8.19V23.182H44.128V20.532h2.479V10.017h.021V8.755H61.8v2.613H49.709v9.164H59.03v2.652H49.571v5.9c0,1.872.624,2.613,2.847,2.613a8.98,8.98,0,0,0,2.5-.351v2.028a6.78,6.78,0,0,1-3.276.78C48.6,34.158,46.607,32.832,46.607,29.556Zm-9.828,4.368V14.619h2.964V33.924ZM96,11.719V8.6h3.042v3.12Zm-59.262-1V7.6h3.042v3.12Z"
+                transform="translate(-10 -6)" fill="#707070" stroke="#707070" stroke-width="2"></path>
+    </svg>
 <%
     List<Registration> registration = (List<Registration>) (request.getAttribute("registrations"));
     for (Registration item: registration)
     {
 %>
-        <div class="container">
-            <a class="btn btn-block btn-social btn-<%=item.getRegistrationId()%>" href="<%=item.getUri()%>">
-                <span class="fa fa-<%=item.getRegistrationId()%>"> Sign in with <%=item.getClientName()%></span>
-            </a>
-        </div>
+    <a class="btn btn-github" href="<%=item.getUri()%>">
+        <svg class="icon icon-github" version="1.1" width="24" height="24" viewBox="0 0 24 24" xml:space="preserve">
+                <path xmlns="http://www.w3.org/2000/svg"
+                      d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"
+                      fill="#ffffff" data-original="#212121"></path>
+            </svg>
+
+        <span class="btn-text"> Sign in with <%=item.getClientName()%></span>
+    </a>
 <%
     }
 %>
+</div>
 
 </body>
 </html>
