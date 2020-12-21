@@ -8,6 +8,7 @@ import lombok.ToString;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
@@ -15,7 +16,9 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Member {
+public class Member implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     private Long id;
 

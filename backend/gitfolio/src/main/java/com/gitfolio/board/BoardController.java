@@ -20,12 +20,12 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/board/id/{boardId}", method = RequestMethod.GET)
-    public Board selectByBoardId(@PathVariable("boardId") long boardId,
-                                 HttpServletResponse response) throws NullPointerException {
+    public Board selectByBoardId(@PathVariable("boardId") long boardId) throws NullPointerException {
         return boardService.selectById(boardId);
     }
 
     @RequestMapping(value = "/board", method = RequestMethod.POST)
+    @ResponseBody
     public boolean insertBoard(@RequestParam("title") String title,
                                @RequestParam("viewContent") String viewContent,
                                @RequestParam("originalContent") String originalContent,
