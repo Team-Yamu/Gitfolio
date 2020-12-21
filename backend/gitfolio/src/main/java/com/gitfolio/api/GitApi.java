@@ -144,11 +144,11 @@ public class GitApi {
         httpConnection.setRequestProperty ("Authorization", auth);
         InputStream is = httpConnection.getInputStream();
         Scanner scanner = new Scanner(is);
-        String rtv = "";
+        StringBuilder rtv = new StringBuilder();
         while (scanner.hasNext()) {
-            rtv = rtv + scanner.next();
+            rtv.append(scanner.next());
         }
         scanner.close();
-        return rtv;
+        return rtv.toString();
     }
 }

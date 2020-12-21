@@ -44,11 +44,17 @@ public class AccessTokenController {
         if(!memberRepository.existsById(toLongId)) {
             member = new Member(oAuth2User, false);
             member.setAccessToken(authorizedClient.getAccessToken().getTokenValue());
+            if(authorizedClient.getRefreshToken() != null) {
+                member.setRefreshToken(authorizedClient.getRefreshToken().getTokenValue());
+            }
             memberService.joinMember(member);
         } else {
             member = memberRepository.getOne(toLongId);
             Member updatedMember = new Member(oAuth2User, member.isSiteAdmin());
             updatedMember.setAccessToken(authorizedClient.getAccessToken().getTokenValue());
+            if(authorizedClient.getRefreshToken() != null) {
+                updatedMember.setRefreshToken(authorizedClient.getRefreshToken().getTokenValue());
+            }
             memberService.updateMember(updatedMember);
         }
 

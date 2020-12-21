@@ -118,6 +118,9 @@ public class Member implements Serializable {
     @Column
     private String accessToken;
 
+    @Column
+    private String refreshToken;
+
     public Member(OAuth2User user, boolean isSiteAdmin) {
         id = ((Number) Objects.requireNonNull(user.getAttribute("id"))).longValue();
         login = user.getAttribute("login");
