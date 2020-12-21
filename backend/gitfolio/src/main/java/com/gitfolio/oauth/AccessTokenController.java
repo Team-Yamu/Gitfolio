@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
-@RestController
+@Controller
 @Component
 public class AccessTokenController {
 
@@ -33,7 +34,7 @@ public class AccessTokenController {
     private BoardService boardService;
 
     @GetMapping("/")
-    public Object accessToken(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
+    public String accessToken(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
                               @AuthenticationPrincipal OAuth2User oAuth2User,
                               HttpServletRequest request,
                               Principal principal,
@@ -56,11 +57,6 @@ public class AccessTokenController {
         boardService.insertBoard("board title", "view!!", "<p>view!!</p>",
                 "", "", principal);
 
-        return oAuth2User.getAttributes();
-    }
-
-    @GetMapping("/user")
-    public OAuth2User index(@AuthenticationPrincipal OAuth2User oauth2User) {
-        return oauth2User;
+        return "user/user";
     }
 }
