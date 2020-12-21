@@ -1,11 +1,15 @@
 package com.gitfolio.board;
 
+import com.gitfolio.user.Member;
+import com.gitfolio.user.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,18 +18,34 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @Autowired
+    private BoardRepository boardRepository;
+
+    @Autowired
+    private MemberRepository memberRepository;
+
     @RequestMapping(value = "/board/uploader/{registerId}", method = RequestMethod.GET)
-    public List<Board> findByRegisterId(@PathVariable("registerId") long registerId) {
-        return boardService.selectByRegisterId(registerId);
+    public List<Board> findByRegisterId(@PathVariable("registerId") String registerId,
+                                        HttpServletResponse response) throws IOException {
+        Optional<Member> op_member = memberRepository.findByLogin(registerId);
+        List<Board> boards = new ArrayList<>();
+
+        if(op_member.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } else {
+            Member member = op_member.get();
+            boards = boardService.selectByRegisterId(member.getId());
+        }
+
+        return boards;
     }
 
     @RequestMapping(value = "/board/id/{boardId}", method = RequestMethod.GET)
     public Board selectByBoardId(@PathVariable("boardId") long boardId) throws NullPointerException {
-        return boardService.selectById(boardId);
+        return boardRepository.getOne(boardId);
     }
 
     @RequestMapping(value = "/board", method = RequestMethod.POST)
-    @ResponseBody
     public boolean insertBoard(@RequestParam("title") String title,
                                @RequestParam("viewContent") String viewContent,
                                @RequestParam("originalContent") String originalContent,

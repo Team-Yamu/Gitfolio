@@ -1,5 +1,6 @@
 package com.gitfolio.oauth;
 
+import com.gitfolio.board.Board;
 import com.gitfolio.board.BoardService;
 import com.gitfolio.user.Member;
 import com.gitfolio.user.MemberRepository;
@@ -27,6 +28,9 @@ public class AccessTokenController {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Autowired
+    private BoardService boardService;
+
     @GetMapping("/")
     public Object accessToken(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
                               @AuthenticationPrincipal OAuth2User oAuth2User,
@@ -35,16 +39,20 @@ public class AccessTokenController {
         HttpSession session = request.getSession();
         session.setAttribute("access_token", authorizedClient.getAccessToken().getTokenValue());
         long toLongId = Long.parseLong(principal.getName(), 10);
+        Member member;
         if(!memberRepository.existsById(toLongId)) {
-            Member member = new Member(oAuth2User, false);
+            member = new Member(oAuth2User, false);
             member.setAccessToken(authorizedClient.getAccessToken().getTokenValue());
             memberService.joinMember(member);
         } else {
-            Member member = memberRepository.getOne(toLongId);
+            member = memberRepository.getOne(toLongId);
             Member updatedMember = new Member(oAuth2User, member.isSiteAdmin());
             updatedMember.setAccessToken(authorizedClient.getAccessToken().getTokenValue());
             memberService.updateMember(updatedMember);
         }
+
+        boardService.insertBoard("board title", "view!!", "<p>view!!</p>",
+                "", "", principal);
 
         return oAuth2User.getAttributes();
     }
