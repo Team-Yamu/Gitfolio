@@ -8,16 +8,14 @@ import com.gitfolio.user.MemberRepository;
 import com.gitfolio.user.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class GitApi {
 
     @Autowired
@@ -54,6 +52,7 @@ public class GitApi {
                 metaData.put("preview_image_url", board.getPreviewImageUrl());
                 metaData.put("title", board.getTitle());
                 metaData.put("register_date_time", board.getRegisterDateTime());
+                metaData.put("update_date_time", board.getUpdateDateTime());
                 mapArrayList.add(metaData);
             }
         }

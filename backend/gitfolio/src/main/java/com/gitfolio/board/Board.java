@@ -36,6 +36,9 @@ public class Board implements Serializable {
     @Column(nullable = false)
     private LocalDateTime registerDateTime;
 
+    @Column(nullable = false)
+    private LocalDateTime updateDateTime;
+
     @Column
     private String previewImageUrl;
 
@@ -48,5 +51,6 @@ public class Board implements Serializable {
     public Board() {
         this.view = 0;
         this.registerDateTime = LocalDateTime.now();
+        this.updateDateTime = this.registerDateTime;
     }
 }

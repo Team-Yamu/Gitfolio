@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +39,7 @@ public class BoardService {
                     board.setViewContent(viewContent);
                     board.setTitle(title);
                     board.setTag(tag);
+                    board.setUpdateDateTime(LocalDateTime.now());
                     boardRepository.save(board);
                     return true;
                 }
