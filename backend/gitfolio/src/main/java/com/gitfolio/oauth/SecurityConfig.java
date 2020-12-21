@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -15,15 +16,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .anyRequest().authenticated()
-                .and()
+                    .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                    .permitAll()
+                    .anyRequest().authenticated()
+                    .and()
                 .logout()
-                .logoutSuccessUrl("/")
-                .and()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // 로그아웃 설정
+                    .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true)
+                    .and()
                 .oauth2Login()
-                .loginPage("/login")
-                .permitAll();
+                    .loginPage("/login")
+                    .permitAll();
     }
     @Override
     public void configure(WebSecurity web) throws Exception {
