@@ -2,11 +2,11 @@ package com.gitfolio.board;
 
 import com.gitfolio.user.Member;
 import com.gitfolio.user.MemberRepository;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,7 @@ public class BoardService {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Transactional
     public boolean updateBoard(long id, String title, String content, String tag, Principal principal) {
         Long currentId = Long.getLong(principal.getName());
         if(currentId != id) { return false; }
@@ -43,8 +44,9 @@ public class BoardService {
         return false;
     }
 
+    @Transactional
     public boolean insertBoard(String title, String content, String tag, Principal principal) {
-        Optional<Member> op_member = memberRepository.findById(Long.getLong(principal.getName()));
+        Optional<Member> op_member = memberRepository.findById(Long.parseLong(principal.getName(), 10));
         if(op_member.isEmpty()) { return false; }
         Member member = op_member.get();
         Board board = new Board();
@@ -56,9 +58,10 @@ public class BoardService {
         return true;
     }
 
+    @Transactional
     public boolean deleteBoard(long id, Principal principal) {
         Optional<Board> op_board = boardRepository.findById(id);
-        Optional<Member> op_member = memberRepository.findById(Long.getLong(principal.getName()));
+        Optional<Member> op_member = memberRepository.findById(Long.parseLong(principal.getName(), 10));
         if(op_member.isEmpty()) { return false; }
         Member member = op_member.get();
         if(op_board.isPresent()) {
@@ -78,5 +81,13 @@ public class BoardService {
             list = op_list.get();
         }
         return list;
+    }
+
+    public Board selectById(Long id) {
+        Board board = boardRepository.getOne(id);
+        int view = board.getView() + 1;
+        board.setView(view);
+        boardRepository.save(board);
+        return board;
     }
 }

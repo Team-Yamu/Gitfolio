@@ -25,13 +25,7 @@ public class BoardController {
     @RequestMapping(value = "/board/id/{boardId}", method = RequestMethod.GET)
     public Board selectByBoardId(@PathVariable("boardId") long boardId,
                                  HttpServletResponse response) throws NullPointerException {
-        Optional<Board> op_board = boardRepository.findById(boardId);
-        if(op_board.isEmpty()) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        } else {
-            return op_board.get();
-        }
-        return new Board();
+        return boardService.selectById(boardId);
     }
 
     @RequestMapping(value = "/board", method = RequestMethod.POST)

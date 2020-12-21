@@ -31,7 +31,11 @@ public class Board {
     @Column
     private String tag;
 
+    @Column
+    private int view;
+
     public Board() {
+        this.view = 0;
         this.registerDateTime = LocalDateTime.now();
     }
 }
