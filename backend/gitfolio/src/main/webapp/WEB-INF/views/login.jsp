@@ -12,7 +12,7 @@
 <html>
 <head>
     <jsp:include page="include/head.jsp"/>
-    <link rel="stylesheet" href="resources/css/login/login.css"/>
+    <link rel="stylesheet" href="/resources/css/login/login.css"/>
     <title>login</title>
 </head>
 <body>
