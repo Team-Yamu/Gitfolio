@@ -81,6 +81,7 @@ public class BoardController {
             Member temp = new Member();
             temp.setId(member.getId());
             temp.setLogin(member.getLogin());
+            temp.setAvatarUrl(member.getAvatarUrl());
             rtv.add(temp);
         }
         return rtv;
