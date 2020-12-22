@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $(document).on("mousedown", ".commit-button", function(e) {
-        var tempNodeparent = $($(e.target.parentNode.parentNode.parentNode).find('.commit-view-comtainer'));
+        var tempNodeparent = $($(e.target.parentNode.parentNode.parentNode).find('.commit-view-container'));
         tempNodeparent.empty();
         $(e.target.parentNode).find('button').attr('id','');
         $(e.target).attr('id','click');

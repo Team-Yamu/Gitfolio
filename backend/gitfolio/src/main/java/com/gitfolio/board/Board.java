@@ -27,11 +27,11 @@ public class Board implements Serializable {
 
     @Lob
     @Column(nullable = false)
-    private Blob viewContent;
+    private String viewContent;
 
     @Lob
     @Column(nullable = false)
-    private Blob originalContent;
+    private String originalContent;
 
     @Column(nullable = false)
     private Long registerId;

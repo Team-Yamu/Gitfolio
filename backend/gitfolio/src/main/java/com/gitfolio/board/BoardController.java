@@ -48,8 +48,8 @@ public class BoardController {
 
     @RequestMapping(value = "/board", method = RequestMethod.POST)
     public boolean insertBoard(@RequestParam("title") String title,
-                               @RequestParam("viewContent") Blob viewContent,
-                               @RequestParam("originalContent") Blob originalContent,
+                               @RequestParam("viewContent") String viewContent,
+                               @RequestParam("originalContent") String originalContent,
                                @RequestParam("previewImageUrl") String previewImageUrl,
                                @RequestParam("tag") String tag,
                                Principal principal) {
@@ -64,8 +64,8 @@ public class BoardController {
 
     @RequestMapping(value = "/board/{boardId}", method = RequestMethod.PATCH)
     public boolean updateBoard(@RequestParam("title") String title,
-                               @RequestParam("viewContent") Blob viewContent,
-                               @RequestParam("originalContent") Blob originalContent,
+                               @RequestParam("viewContent") String viewContent,
+                               @RequestParam("originalContent") String originalContent,
                                @RequestParam("tag") String tag,
                                @PathVariable("boardId") long boardId,
                                Principal principal) {

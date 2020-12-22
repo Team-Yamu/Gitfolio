@@ -24,8 +24,8 @@ public class BoardService {
     private MemberRepository memberRepository;
 
     @Transactional
-    public boolean updateBoard(long id, String title, Blob viewContent,
-                               Blob originalContent, String tag, Principal principal) {
+    public boolean updateBoard(long id, String title, String viewContent,
+                               String originalContent, String tag, Principal principal) {
         Long currentId = Long.getLong(principal.getName());
         if(currentId != id) { return false; }
 
@@ -51,8 +51,8 @@ public class BoardService {
 
     @Transactional
     public boolean insertBoard(String title,
-                               Blob viewContent,
-                               Blob originalContent,
+                               String viewContent,
+                               String originalContent,
                                String previewImageUrl,
                                String tag,
                                Principal principal) {
