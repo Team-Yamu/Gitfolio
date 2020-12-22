@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -47,8 +48,8 @@ public class BoardController {
 
     @RequestMapping(value = "/board", method = RequestMethod.POST)
     public boolean insertBoard(@RequestParam("title") String title,
-                               @RequestParam("viewContent") String viewContent,
-                               @RequestParam("originalContent") String originalContent,
+                               @RequestParam("viewContent") Blob viewContent,
+                               @RequestParam("originalContent") Blob originalContent,
                                @RequestParam("previewImageUrl") String previewImageUrl,
                                @RequestParam("tag") String tag,
                                Principal principal) {
@@ -63,8 +64,8 @@ public class BoardController {
 
     @RequestMapping(value = "/board/{boardId}", method = RequestMethod.PATCH)
     public boolean updateBoard(@RequestParam("title") String title,
-                               @RequestParam("viewContent") String viewContent,
-                               @RequestParam("originalContent") String originalContent,
+                               @RequestParam("viewContent") Blob viewContent,
+                               @RequestParam("originalContent") Blob originalContent,
                                @RequestParam("tag") String tag,
                                @PathVariable("boardId") long boardId,
                                Principal principal) {

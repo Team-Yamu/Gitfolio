@@ -58,9 +58,6 @@ public class AccessTokenController {
             memberService.updateMember(updatedMember);
         }
 
-        boardService.insertBoard("board title", "view!!", "<p>view!!</p>",
-                "", "", principal);
-
         return "user/user";
     }
 }

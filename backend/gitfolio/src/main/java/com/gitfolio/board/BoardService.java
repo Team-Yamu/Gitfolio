@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.security.Principal;
+import java.sql.Blob;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,8 @@ public class BoardService {
     private MemberRepository memberRepository;
 
     @Transactional
-    public boolean updateBoard(long id, String title, String viewContent,
-                               String originalContent, String tag, Principal principal) {
+    public boolean updateBoard(long id, String title, Blob viewContent,
+                               Blob originalContent, String tag, Principal principal) {
         Long currentId = Long.getLong(principal.getName());
         if(currentId != id) { return false; }
 
@@ -50,8 +51,8 @@ public class BoardService {
 
     @Transactional
     public boolean insertBoard(String title,
-                               String viewContent,
-                               String originalContent,
+                               Blob viewContent,
+                               Blob originalContent,
                                String previewImageUrl,
                                String tag,
                                Principal principal) {

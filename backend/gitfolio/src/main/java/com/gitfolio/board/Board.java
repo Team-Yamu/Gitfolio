@@ -7,6 +7,7 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,11 +25,13 @@ public class Board implements Serializable {
     @Column(nullable = false)
     private String title;
 
+    @Lob
     @Column(nullable = false)
-    private String viewContent;
+    private Blob viewContent;
 
+    @Lob
     @Column(nullable = false)
-    private String originalContent;
+    private Blob originalContent;
 
     @Column(nullable = false)
     private Long registerId;
