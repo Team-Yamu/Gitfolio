@@ -71,4 +71,18 @@ public class BoardController {
                                Principal principal) {
         return boardService.updateBoard(boardId, title, viewContent, originalContent, tag, principal);
     }
+
+
+    @RequestMapping(value = "/users")
+    public List<Member> getMembers() {
+        List<Member> members = memberRepository.findAll();
+        List<Member> rtv = new ArrayList<>();
+        for (Member member : members) {
+            Member temp = new Member();
+            temp.setId(member.getId());
+            temp.setLogin(member.getLogin());
+            rtv.add(temp);
+        }
+        return rtv;
+    }
 }

@@ -18,6 +18,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MemberController
 {
+
     @RequestMapping(value = "/page/user", method = RequestMethod.GET)
     public String viewUser() {
         return "/user/user";

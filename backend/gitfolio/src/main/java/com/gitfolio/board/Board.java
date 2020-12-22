@@ -7,7 +7,6 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
 import java.time.LocalDateTime;
 
 @Entity
