@@ -35,7 +35,7 @@
 <div id="post_selector_container">
     <ul>
         <li id="post_selector_series"><a href="#">글</a></li>
-        <li id="post_create"><a href="#">새글 추가</a></li>
+        <li id="post_create"><a href="/board/edit">새글 추가</a></li>
     </ul>
 </div>
 <section id="post_container">

@@ -1,0 +1,84 @@
+.container{
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+}
+.item-container
+{
+    overflow: auto;
+    height: 700px;
+}
+
+.addItem
+{
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #212121;
+    box-shadow: 5px 5px 0px #b3b3b3,
+    -5px -5px 0px #e2e2e2;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.addItem:hover
+{
+    box-shadow: 0px 0px 0px #b3b3b3,
+    -0px -0px 0px #e2e2e2;
+}
+.itemBox {
+    border:solid 1px #ebebeb;
+    padding:20px;
+    margin-bottom:10px;
+    border-radius: 20px;
+    background-color:#ffffff;
+    overflow: auto;
+    position:relative;
+    max-width:820px;
+    min-height:30px;
+}
+.itemBoxHighlight {
+    background-color:#f9f9f5;
+}
+.deleteBox {
+    position: absolute;
+    display:none;
+    cursor:pointer;
+    right: 20px;
+    top: 5px;
+}
+.sortDragSVG{
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    right: 50px;
+    top: 50%;
+}
+.sortDragSVG:hover path{
+    cursor: pointer;
+    fill: #222121;
+}
+textarea {
+    overflow-y: hidden;
+    resize: none;
+    border: none;
+    font-size: 18px;
+    width:720px;
+    max-width:720px;
+}
+textarea:focus {
+    outline: none;
+}
+textarea:hover {
+    outline: none;
+}
+.markdown-view
+{
+    width:720px;
+    max-width:720px;
+}
+.textarea-box
+{
+    width: 720px;
+}

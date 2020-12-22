@@ -19,7 +19,12 @@ import java.util.Optional;
 public class MemberController
 {
     @RequestMapping(value = "/page/user", method = RequestMethod.GET)
-    public String updateBoard() {
+    public String viewUser() {
         return "/user/user";
+    }
+
+    @RequestMapping(value = "/board/edit", method = RequestMethod.GET)
+    public String viewEditer() {
+        return "/board/boardPost";
     }
 }

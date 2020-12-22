@@ -1,0 +1,42 @@
+.add-commit-container, .commit-view-comtainer
+{
+    max-width: 720px;
+}
+.repo-buttons > button, .commit-buttons > button
+{
+    padding: 5px 10px;
+    cursor:pointer;
+}
+.btn-select-repo
+{
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #212121;
+    box-shadow: 5px 5px 0px #b3b3b3,
+    -5px -5px 0px #e2e2e2;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.btn-select-repo:hover
+{
+    box-shadow: 0px 0px 0px #b3b3b3,
+    -0px -0px 0px #e2e2e2;
+}
+
+.commit-view-comtainer
+{
+    margin:20px;
+}
+.commit-url
+{
+    text-decoration: none;
+    color: rgb(4, 197, 197);
+    transition: 0.2s;
+}
+.commit-url:hover
+{
+    color: rgb(1, 160, 160);
+}
