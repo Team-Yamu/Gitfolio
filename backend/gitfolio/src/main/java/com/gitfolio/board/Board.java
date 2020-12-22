@@ -42,6 +42,7 @@ public class Board implements Serializable {
     @Column
     private LocalDateTime updateDateTime;
 
+    @Lob
     @Column
     private String previewImageUrl;
 
