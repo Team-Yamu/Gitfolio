@@ -1,15 +1,36 @@
 $(document).ready(function () {
-
+    let userId = window.location.pathname;
+    userId = userId.replace('/page/user','');
     $.ajax({
-        url: "/api/user",
+        url: "/api/user"+userId,
         type: "GET",
         success: function(result)
         {
+            console.log(result);
             $('#user_name').text(result['login']);
-            $('#user_icon').attr({
-                src:result['avatar_url'],
-                alt:result['login'] + "'s icon"
-            })
+            if(result['avatarUrl'])
+            {
+                $('#user_icon').attr({
+                    src:result['avatarUrl'],
+                    alt:result['login'] + "'s icon"
+                })
+            }
+            else
+            {
+                $('#user_icon').attr({
+                    src:result['avatar_url'],
+                    alt:result['login'] + "'s icon"
+                })
+            }
+
+            if(result['is_admin'])
+            {
+                $('#post_create').css('display','inline-block');
+            }
+            else
+            {
+                $('#post_create').css('display','none');
+            }
 
             $('#github_link').attr('href',result['html_url']);
 
@@ -39,7 +60,8 @@ $(document).ready(function () {
         },
         error: function()
         {
-            alert("Failed to connect to server");
+            alert("Not Found Page");
+            history.back();
         }
     });
 })

@@ -19,7 +19,7 @@ import java.util.Optional;
 public class MemberController
 {
 
-    @RequestMapping(value = "/page/user", method = RequestMethod.GET)
+    @RequestMapping(value = {"/page/user","/page/user/{id}"}, method = RequestMethod.GET)
     public String viewUser() {
         return "/user/user";
     }

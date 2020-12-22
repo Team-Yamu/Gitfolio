@@ -38,20 +38,21 @@ public class GitApi {
     }
 
     @GetMapping("/api/user/{userId}")
-    public Map<String, Object> getUserDashBoard(
+    public  Map<String, Object>  getUserDashBoard(
             @PathVariable("userId") String userId,
-            HttpServletResponse response
-    ) {
+            HttpServletResponse response,
+            Principal principal
+    ) throws IOException
+    {
         Map<String, Object> rtv = new HashMap<>();
+        Member member = new Member();
         Optional<Member> op_member = memberRepository.findByLogin(userId);
         if(op_member.isEmpty()) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return rtv;
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } else {
+            member = op_member.get();
         }
-
-        Member member = op_member.get();
-
-        return getStringObjectMap(rtv, member);
+        return getStringObjectMap(rtv, member, principal);
     }
 
     @GetMapping("/api/user")
@@ -62,10 +63,10 @@ public class GitApi {
         Map<String, Object> rtv = new HashMap<>();
         Long toLongid = Long.parseLong(principal.getName());
         Member member = memberRepository.getOne(toLongid);
-        return getStringObjectMap(rtv, member);
+        return getStringObjectMap(rtv, member, principal);
     }
 
-    private Map<String, Object> getStringObjectMap(Map<String, Object> rtv, Member member) {
+    private Map<String, Object> getStringObjectMap(Map<String, Object> rtv, Member member, Principal principal) {
         Optional<List<Board>> op_boards = boardRepository.findByRegisterIdOrderByRegisterDateTimeDesc(member.getId());
         List<Map<String, Object>> mapArrayList = new ArrayList<>();
         if (op_boards.isPresent()) {
@@ -94,6 +95,12 @@ public class GitApi {
         rtv.put("url", member.getUrl());
         rtv.put("avatar_url", member.getAvatarUrl());
         rtv.put("repos_url", member.getReposUrl());
+
+        Long longid = Long.parseLong(principal.getName());
+        boolean test = member.getId().equals(longid);
+        member.setSiteAdmin(test);
+
+        rtv.put("is_admin", member.isSiteAdmin());
 
         return rtv;
     }
