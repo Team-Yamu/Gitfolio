@@ -21,7 +21,7 @@ $(document).ready(function () {
                 let tempTag = $("<a/>");
                 tempTag.attr({
                     class:'post_image_href',
-                    href:"/board/id/"+tempArray[i]['id']
+                    href:"/board/"+tempArray[i]['id']
                 });
                 let tempTag2 = $('<img/>');
                 tempTag2.attr({

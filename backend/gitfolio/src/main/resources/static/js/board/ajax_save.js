@@ -18,14 +18,33 @@ $(document).ready(function () {
             imageUrl =  $(tempNode[0]).attr('src');
         }
 
+        let node = $('.itemBox');
+
+        tempNode = $('<div/>').attr({
+            id:'contentView'
+        });
+
+        console.log($(node).length);
+
+        for(let i = 0; i<$(node).length;i++)
+        {
+            tempNode.append($(node[i]).clone().find('.commit-view-container'));
+            tempNode.append($(node[i]).clone().find('.markdown-view'));
+        }
+        console.log($(tempNode));
+        let viewNode = tempNode.clone().get(0).outerHTML;
+
+        tempNode = $('#itemBoxWrap');
+        let originalNode = tempNode.clone().get(0).outerHTML;
+
         $.ajax({
             type: "POST",
             url: "/board",
             dataType : "json",
             data:{
                 title: $('#input-box-title').val(),
-                viewContent: getViewContent(),
-                originalContent: getOriginalContent(),
+                viewContent: viewNode,
+                originalContent: originalNode,
                 previewImageUrl: imageUrl,
                 tag:" "
             },
@@ -48,25 +67,3 @@ $(document).ready(function () {
         });
     });
 });
-
-
-function getViewContent() {
-    let node = $('.itemBox');
-
-    let tempNode = $('<div/>').attr({
-        id:'contentView'
-    });
-
-    for(let i = 0; i<tempNode.length;i++)
-    {
-        tempNode.append($(node[i]).find('.commit-view-container'));
-        tempNode.append($(node[i]).find('.markdown-view'));
-    }
-    console.log(tempNode.get(0).outerHTML);
-    return tempNode.get(0).outerHTML;
-}
-
-function getOriginalContent() {
-    let tempNode = $('#itemBoxWrap');
-    return tempNode.get(0).outerHTML;
-}

@@ -27,4 +27,9 @@ public class MemberController
     public String viewEditer() {
         return "/board/boardPost";
     }
+
+    @RequestMapping(value = "/board/{boardId}", method = RequestMethod.GET)
+    public String boardDetail() {
+        return "/board/boardDetail";
+    }
 }
