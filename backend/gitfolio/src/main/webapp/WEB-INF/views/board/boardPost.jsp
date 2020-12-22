@@ -36,6 +36,7 @@
         <input type="button" class="addItem" id="addItem-markdown" value="Add markdown" />
         <input type="button" class="addItem" id="addItem-commit" value="Add commit" />
         <input type="button" class="addItem" id="btn-save" value="Save"/>
+<%--        <button class="addItem" id="btn-save">Save</button>--%>
     </div>
     <input type="text" id="input-box-title" placeholder="Title">
     <br />

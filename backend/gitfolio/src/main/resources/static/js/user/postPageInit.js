@@ -13,21 +13,20 @@ $(document).ready(function () {
 
             $('#github_link').attr('href',result['html_url']);
 
-            var tempArray = result['board_metadata'];
+            let tempArray = result['board_metadata'];
 
-            for(var i = 0; i<tempArray.length;i++)
+            for(let i = 0; i<tempArray.length;i++)
             {
-                var rootTag = $('<article class="post"></article>');
-                var tempTag = $("<a/>");
+                let rootTag = $('<article class="post"></article>');
+                let tempTag = $("<a/>");
                 tempTag.attr({
                     class:'post_image_href',
                     href:"/board/id/"+tempArray[i]['id']
                 });
-                var tempTag2 = $('<img/>');
+                let tempTag2 = $('<img/>');
                 tempTag2.attr({
                     class:'post_image',
-                    src:"/resources/images/defaultImage.png"
-                        // tempArray[i]['preview_image_url']
+                    src: tempArray[i]['preview_image_url']
                 });
                 tempTag.append(tempTag2);
                 rootTag.append(tempTag);
@@ -37,11 +36,6 @@ $(document).ready(function () {
             }
 
             $('<span>domTest</span>');
-        // <a class="post_image_href" href="#"><img class="post_image" src="../img/dooli.png" alt="이미지에 대한 설명"></a>
-        //     <h4 class="post_title"><a href="#">{title}</a></h4>
-        // <div class="post_info">
-        //     <p class="post_info_last_update">마지막 업데이트 2020년 12월 19일</p>
-        // </div>
         },
         error: function()
         {

@@ -17,7 +17,6 @@ $(document).ready(function() {
     $(document).on("keyup", "textarea", function(e) {
         $(this).css("height", "auto");
         $(this).height(this.scrollHeight);
-
         const html = marked($(e.target).val());
         let target = $(this).parent().parent().find('.markdown-view')
         $(target).html(html);

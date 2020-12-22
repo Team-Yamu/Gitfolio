@@ -1,11 +1,23 @@
 $(document).ready(function () {
     $(document).on("mousedown", "#btn-save", function(e) {
-        console.log($('#input-box-title').val());
         if($('#input-box-title').val()==="")
         {
             alert("제목을 입력해주세요");
             return;
         }
+
+        let imageUrl;
+        let tempNode = $('#itemBoxWrap');
+        tempNode = $(tempNode).find('img');
+        if(tempNode.length === 0)
+        {
+            imageUrl =  "/resources/images/defaultImage.png";
+        }
+        else
+        {
+            imageUrl =  $(tempNode[0]).attr('src');
+        }
+
         $.ajax({
             type: "POST",
             url: "/board",
@@ -14,7 +26,7 @@ $(document).ready(function () {
                 title: $('#input-box-title').val(),
                 viewContent: getViewContent(),
                 originalContent: getOriginalContent(),
-                previewImageUrl:"/resources/images/defaultImage.png",
+                previewImageUrl: imageUrl,
                 tag:" "
             },
             success: function(result)
@@ -37,6 +49,7 @@ $(document).ready(function () {
     });
 });
 
+
 function getViewContent() {
     let node = $('.itemBox');
 
@@ -44,7 +57,7 @@ function getViewContent() {
         id:'contentView'
     });
 
-    for(let i = 0; i<2;i++)
+    for(let i = 0; i<tempNode.length;i++)
     {
         tempNode.append($(node[i]).find('.commit-view-container'));
         tempNode.append($(node[i]).find('.markdown-view'));
