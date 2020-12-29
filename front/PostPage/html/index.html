@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta html-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/github_md_style.css"> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/init.css"/>
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/markdownStyle.css"/>
+    <title>메인</title>
+
+    <!-- ------------------------------------------ -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/atom-one-light.min.css'>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+</head>
+<style>
+.container{
+    max-width: 820px;
+    margin: auto;
+    margin-top: 100px;
+}
+.item-container
+{
+    overflow: auto;
+    height: 700px;
+}
+
+.addItem
+{
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #212121;
+    box-shadow: 5px 5px 0px #b3b3b3,
+    -5px -5px 0px #e2e2e2;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.addItem:hover
+{
+    box-shadow: 0px 0px 0px #b3b3b3,
+    -0px -0px 0px #e2e2e2;
+}
+.itemBox {
+    border:solid 1px #ebebeb;
+    padding:20px;
+    margin-bottom:10px;
+    border-radius: 20px;
+    background-color:#ffffff;
+    overflow: auto;
+    position:relative;
+    max-width:820px;
+    min-height:30px;
+}
+.itemBoxHighlight {
+    background-color:#f9f9f5;
+}
+.deleteBox {
+    position: absolute;
+    display:none;
+    cursor:pointer;
+    right: 20px;
+    top: 5px;
+}
+.sortDragSVG{
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    right: 50px;
+    top: 50%;
+}
+.sortDragSVG:hover path{
+    cursor: pointer;
+    fill: #222121;
+}
+textarea {
+    overflow-y: hidden;
+    resize: none;
+    border: none;
+    font-size: 18px;
+    width:720px;
+    max-width:720px;
+}
+textarea:focus {
+    outline: none;
+}
+textarea:hover {
+    outline: none;
+}
+.markdown-view
+{
+    width:720px;
+    max-width:720px;
+}
+.textarea-box
+{
+    width: 720px;
+}
+.add-commit-container, .commit-view-comtainer
+{
+    max-width: 720px;
+}
+.repo-buttons > button, .commit-buttons > button
+{
+    padding: 5px 10px;
+    cursor:pointer;
+}
+.btn-select-repo
+{
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #212121;
+    box-shadow: 5px 5px 0px #b3b3b3,
+    -5px -5px 0px #e2e2e2;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.btn-select-repo:hover
+{
+    box-shadow: 0px 0px 0px #b3b3b3,
+    -0px -0px 0px #e2e2e2;
+}
+
+.commit-view-comtainer
+{
+    margin:20px;
+}
+.commit-url
+{
+    text-decoration: none;
+    color: rgb(4, 197, 197);
+    transition: 0.2s;
+}
+.commit-url:hover
+{
+    color: rgb(1, 160, 160);
+}
+.component-close
+{
+    display: block;
+    padding: 5px 10px;
+    margin: 10px auto;
+}
+</style>
+<style>
+    .itemBox {
+        border:solid 1px #ebebeb;
+        padding:20px;
+        margin-bottom:10px;
+        border-radius: 20px;
+        background-color:#ffffff;
+        overflow: auto;
+        position:relative;
+        max-width:820px;
+        min-height:30px;
+    }
+    .itemBoxHighlight {
+        background-color:#f9f9f5;
+    }
+    .deleteBox {
+        position: absolute;
+        display:none;
+        cursor:pointer;
+        right: 20px;
+        top: 5px;
+    }
+    .sortDragSVG{
+        cursor: pointer;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        right: 50px;
+        top: 50%;
+    }
+    .sortDragSVG:hover path{
+        cursor: pointer;
+        fill: #222121;
+    }
+    textarea {
+        overflow-y: hidden;
+        resize: none;
+        border: none;
+        font-size: 18px;
+        width:720px;
+        max-width:720px;
+    }
+    textarea:focus {
+        outline: none;
+    }
+    textarea:hover {
+        outline: none;
+    }
+    .markdown-view
+    {
+        width:720px;
+        max-width:720px;
+    }
+    </style>
+    <style>
+        .add-commit-container, .commit-view-comtainer
+        {
+            max-width: 720px;
+        }
+        .repo-buttons > button, .commit-buttons > button
+        {
+            padding: 5px 10px;
+        }
+        .btn-select-repo
+        {
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 7px;
+            background: #212121;
+            box-shadow: 5px 5px 0px #b3b3b3,
+            -5px -5px 0px #e2e2e2;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-select-repo:hover
+        {
+            box-shadow: 0px 0px 0px #b3b3b3,
+            -0px -0px 0px #e2e2e2;
+        }
+    </style>
+    <script>
+        $(function() {
+            $("#itemBoxWrap").sortable({
+                placeholder: "itemBoxHighlight itemBox",
+                start: function (event, ui) {
+                    ui.item.data('start_pos', ui.item.index());
+                    $(this).find('.deleteBox').hide();
+                    $(this).css('background', 'none');
+                },
+                stop: function (event, ui) {
+                    var spos = ui.item.data('start_pos');
+                    var epos = ui.item.index();
+                }
+            });
+        });
+
+        function createItem_repo() {
+            $(createBox())
+                .appendTo("#itemBoxWrap")
+                .hover(
+                    function () {
+                        $(this).find('.deleteBox').show();
+                    },
+                    function () {
+                        $(this).find('.deleteBox').hide();
+                    }
+                )
+                .append("<span class='deleteBox'>[삭제]</span>")
+                .find(".deleteBox").click(function () {
+                    $(this).parent().remove();
+                });
+        }
+        function createItem_commit() {
+            $(createBox_commit())
+                .appendTo("#itemBoxWrap")
+                .hover(
+                    function () {
+                        $(this).find('.deleteBox').show();
+                    },
+                    function () {
+                        $(this).find('.deleteBox').hide();
+                    }
+                )
+                .append("<span class='deleteBox'>[삭제]</span>")
+                .find(".deleteBox").click(function () {
+                    $(this).parent().remove();
+                });
+        }
+
+        // 아이템을 구성할 태그를 반환합니다.
+        // itemBox 내에 번호를 표시할 itemNum 과 입력필드가 있습니다.
+        function createBox() {
+            var contents
+                = '<div class="itemBox">'
+                    + '<div>'
+                        + '<svg class="sortDragSVG" xmlns="http://www.w3.org/2000/svg" width="15" height="30" viewBox="0 0 15 30">'
+                            + '<path d="M20.075,38.816a2.355,2.355,0,0,1-1.988-1.043L12.926,29.9a2.054,2.054,0,0,1-.049-2.218,2.335,2.335,0,0,1,2.038-1.123H25.235a2.335,2.335,0,0,1,2.038,1.123,2.054,2.054,0,0,1-.05,2.219l-5.161,7.875A2.357,2.357,0,0,1,20.075,38.816Zm5.16-17.741H14.914a2.335,2.335,0,0,1-2.038-1.123,2.054,2.054,0,0,1,.049-2.218l5.162-7.875a2.416,2.416,0,0,1,3.977,0l5.161,7.875a2.054,2.054,0,0,1,.05,2.219A2.335,2.335,0,0,1,25.235,21.075Z" transform="translate(-12.575 -8.816)" fill="#707070"/>'
+                        + '</svg>'
+                        + '<div class="markdown-view">'
+                        + '</div>'
+                        + '<div>'
+                            + '<hr>'
+                            + '<textarea onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+\'\t\'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" class="autosize"></textarea>'
+                        + '</div>'
+                    + '</div>'
+                + '</div>';
+            return contents;
+        }
+
+        function createBox_commit() {
+            var contents
+                = '<div class="itemBox">'
+                    + '<div>'
+                        + '<svg class="sortDragSVG" xmlns="http://www.w3.org/2000/svg" width="15" height="30" viewBox="0 0 15 30">'
+                            + '<path d="M20.075,38.816a2.355,2.355,0,0,1-1.988-1.043L12.926,29.9a2.054,2.054,0,0,1-.049-2.218,2.335,2.335,0,0,1,2.038-1.123H25.235a2.335,2.335,0,0,1,2.038,1.123,2.054,2.054,0,0,1-.05,2.219l-5.161,7.875A2.357,2.357,0,0,1,20.075,38.816Zm5.16-17.741H14.914a2.335,2.335,0,0,1-2.038-1.123,2.054,2.054,0,0,1,.049-2.218l5.162-7.875a2.416,2.416,0,0,1,3.977,0l5.161,7.875a2.054,2.054,0,0,1,.05,2.219A2.335,2.335,0,0,1,25.235,21.075Z" transform="translate(-12.575 -8.816)" fill="#707070"/>'
+                        + '</svg>'
+                        + '<div>'
+                            + '<select class="combobox-repo"><option value="">레포지토리 선택</option></select>'
+                            + '<select class="combobox-commit"><option value="">커밋 선택</option></select>'
+                        + '</div>'
+                    + '</div>'
+                + '</div>';
+            return contents;
+        }
+
+        $(document).ready(function() {
+            $(document).on("keyup", "textarea", function(e) {
+                $(this).css("height", "auto");
+                $(this).height(this.scrollHeight);
+        
+                const html = marked($(e.target).val());
+                let target = $(this).parent().parent().find('.markdown-view')
+                $(target).empty();
+                $(target).html(html);
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            });
+            $(document).find("textarea").keyup();
+
+            
+            $('.itemBox').find(".deleteBox").remove();
+            $('.itemBox').hover(
+                    function () {
+                        $(this).find('.deleteBox').show();
+                    },
+                    function () {
+                        $(this).find('.deleteBox').hide();
+                    }
+                )
+                .append("<span class='deleteBox'>[삭제]</span>")
+                .find(".deleteBox").click(function () {
+                    $(this).parent().remove();
+                });
+        })
+        
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $(document).on("mousedown", ".btn-select-repo", function(e) {
+                $($(e.target.parentNode).find('.repo-buttons')).append($('<button/>').html("Test"));
+                
+            });
+            $(document).on("mousedown", ".repo-button", function(e) {
+                console.log($(e.target).text());
+                
+            });
+
+            $(document).on("mousedown", ".commit-button", function(e) {
+                console.log($(e.target).text());
+                
+            });
+            $(document).on("mousedown", ".component-close", function(e) {
+            
+                var tempNode = $(e.target.parentNode).find('.edit-component')
+                if($(tempNode).css('display') === 'none')
+                {
+                    $(tempNode).css('display','block');
+                    $(e.target).text('close');
+                }
+                else
+                {
+                    $(tempNode).css('display','none');
+                    $(e.target).text('open');
+                }
+                
+            });
+        });
+    </script>
+    <style>
+        .commit-view-comtainer
+        {
+            margin:20px;
+        }
+        .commit-url
+        {
+            text-decoration: none;
+            color: rgb(4, 197, 197);
+            transition: 0.2s;
+        }
+        .commit-url:hover
+        {
+            color: rgb(1, 160, 160);
+        }
+    </style>
+    <style>
+        .component-close
+        {
+            display: block;
+            padding: 5px 10px;
+            margin: 0px auto;
+        }
+
+        #input-box-title
+        {
+            padding: 20px 2%;
+            margin: 10px auto;
+            font-size: 20px;
+            border: 1px solid rgb(175, 175, 175);
+            border-radius: 10px;
+            max-width: 800px;
+            width: 96%;
+        }
+        input[type="text"]:focus
+        {
+            outline: none;
+        }
+    </style>
+    <style>
+        #users
+        {
+            width: 100%;
+        }
+        #users > div
+        {
+            height: 20px;
+        }
+        #users > div > a
+        {
+            margin: 0px;
+            font-size: 13px;
+        }
+    </style>
+<body>
+    <div class="header">
+        <svg class="logo logo-header" width="112" height="30" viewBox="0 0 112 30">
+            <path
+                d="M103.568,25.6v-.585c0-6.124,3.549-9.789,8.775-9.789,5.459,0,8.775,3.549,8.775,9.672v.545c0,6.162-3.588,9.828-8.815,9.828C106.844,35.275,103.568,31.765,103.568,25.6Zm3.042-.9v.975c0,5.382,2.534,7.137,5.772,7.137,3.51,0,5.694-2.457,5.694-7.02v-.975c0-5.382-2.614-7.137-5.773-7.137C108.794,17.686,106.61,20.182,106.61,24.706Zm-41.575.9v-.585c0-6.124,3.55-9.789,8.775-9.789,5.46,0,8.775,3.549,8.775,9.672v.545c0,6.162-3.587,9.828-8.814,9.828C68.312,35.275,65.036,31.765,65.036,25.6Zm3.042-.9v.975c0,5.382,2.535,7.137,5.773,7.137,3.51,0,5.693-2.457,5.693-7.02v-.975c0-5.382-2.613-7.137-5.772-7.137C70.262,17.686,68.078,20.182,68.078,24.706ZM96.041,34.924v-19.3h2.965v19.3Zm-8.892,0V7h3V34.924ZM11,21.366v-.7c0-9.828,5.773-13.338,12.363-13.338a14.329,14.329,0,0,1,6.825,1.521v2.691a15.126,15.126,0,0,0-7.059-1.6c-6.513,0-8.814,4.758-8.814,10.3v1.053c0,6.084,1.872,10.452,8.892,10.452a14.921,14.921,0,0,0,4.914-.779V23.823H22.505V21.249h8.658v11.66a23.132,23.132,0,0,1-8.034,1.444C15.719,34.353,11,30.335,11,21.366Zm35.608,8.19V23.182H44.128V20.532h2.479V10.017h.021V8.755H61.8v2.613H49.709v9.164H59.03v2.652H49.571v5.9c0,1.872.624,2.613,2.847,2.613a8.98,8.98,0,0,0,2.5-.351v2.028a6.78,6.78,0,0,1-3.276.78C48.6,34.158,46.607,32.832,46.607,29.556Zm-9.828,4.368V14.619h2.964V33.924ZM96,11.719V8.6h3.042v3.12Zm-59.262-1V7.6h3.042v3.12Z"
+                transform="translate(-10 -6)" fill="#ffffff" stroke="#ffffff" stroke-width="2" />
+        </svg>
+        <span class="sign-container">
+            <input type="text" placeholder="Search">
+            <div id="users">
+                <div class="img-user"><a>test</a></div>
+                <div class="user-name"><a>algo2000</a></div>
+            </div>
+        </span>
+    </div>
+    <div class="container">
+        <div style="clar:both; max-width: 820px;">
+            <input type="button" class="addItem" id="addItem-markdown" value="Add markdown" onclick="createItem_repo();" />
+            <input type="button" class="addItem" id="addItem-commit" value="Add commit" onclick="createItem_commit();" />
+            <input type="button" class="addItem" id="save" value="Save" style="float: right;"/>
+        </div>
+        <input type="text" id="input-box-title" placeholder="Title">
+        <br />
+        <div class="item-container">
+            <div id="itemBoxWrap">
+                <div class='itemBox'>
+                    <div>
+                        <svg class="sortDragSVG" xmlns="http://www.w3.org/2000/svg" width="15" height="30" viewBox="0 0 15 30">
+                            <path d="M20.075,38.816a2.355,2.355,0,0,1-1.988-1.043L12.926,29.9a2.054,2.054,0,0,1-.049-2.218,2.335,2.335,0,0,1,2.038-1.123H25.235a2.335,2.335,0,0,1,2.038,1.123,2.054,2.054,0,0,1-.05,2.219l-5.161,7.875A2.357,2.357,0,0,1,20.075,38.816Zm5.16-17.741H14.914a2.335,2.335,0,0,1-2.038-1.123,2.054,2.054,0,0,1,.049-2.218l5.162-7.875a2.416,2.416,0,0,1,3.977,0l5.161,7.875a2.054,2.054,0,0,1,.05,2.219A2.335,2.335,0,0,1,25.235,21.075Z" transform="translate(-12.575 -8.816)" fill="#707070"/>
+                        </svg>
+                        <div class="markdown-view">
+                        
+                        </div>
+                        <button class="component-close">close</button>
+                        <div class="edit-component">
+                            <hr>
+                            <textarea onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" class="autosize"></textarea>
+                        </div>
+                    </div>
+                    <span class='deleteBox'>[삭제]</span>
+                </div>
+
+                <div class='itemBox'>
+                    <div>
+                        <svg class="sortDragSVG" xmlns="http://www.w3.org/2000/svg" width="15" height="30" viewBox="0 0 15 30">
+                            <path d="M20.075,38.816a2.355,2.355,0,0,1-1.988-1.043L12.926,29.9a2.054,2.054,0,0,1-.049-2.218,2.335,2.335,0,0,1,2.038-1.123H25.235a2.335,2.335,0,0,1,2.038,1.123,2.054,2.054,0,0,1-.05,2.219l-5.161,7.875A2.357,2.357,0,0,1,20.075,38.816Zm5.16-17.741H14.914a2.335,2.335,0,0,1-2.038-1.123,2.054,2.054,0,0,1,.049-2.218l5.162-7.875a2.416,2.416,0,0,1,3.977,0l5.161,7.875a2.054,2.054,0,0,1,.05,2.219A2.335,2.335,0,0,1,25.235,21.075Z" transform="translate(-12.575 -8.816)" fill="#707070"/>
+                        </svg>
+                        <div class="commit-view-comtainer">
+                            <a class="commit-url" href="https://github.com/algo2000/algo2000.github.io/commit/0c4d5e9294c050b0a5d6eaa41e2db9b7e8ac6dee">Site updated: 2020-12-16 00:56:09</a>
+                        </div>
+                        <button class="component-close">close</button>
+                        <div class="add-commit-container edit-component">
+                            <button class="btn-select-repo">search repository</button>
+                            <h3>repositorys</h3>
+                            <div class="repo-buttons">
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                                <button class="repo-button">testestsetset</button>
+                            </div>
+                            <h3>commits</h3>
+                            <div class="commit-buttons">
+                                <button class="commit-button">testestsetset</button>
+                                <button class="commit-button">testestsetset</button>
+                                <button class="commit-button">testestsetset</button>
+                                <button class="commit-button">testestsetset</button>
+                                <button class="commit-button">testestsetset</button>
+                                <button class="commit-button">testestsetset</button>
+                                <button class="commit-button">testestsetset</button>
+                            </div>
+                        </div>
+                    </div>
+                    <span class='deleteBox'>[삭제]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

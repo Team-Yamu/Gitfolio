@@ -66,6 +66,7 @@ main {
 }
 
 #user_info_container {
+    margin-top: 100px;
     display: inline-flex;
     flex-direction: row;
 }
